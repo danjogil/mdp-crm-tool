@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -50,7 +51,7 @@ const LoginForm = () => {
 
       if (callback?.ok) {
         toast.success("Successfully logged in!");
-        // router.push("/dashboard");
+        router.push("/dashboard");
         router.refresh();
       }
 
@@ -62,7 +63,7 @@ const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <div className="w-full max-w-md font-bold text-xl md:text-2xl mb-5 mt-3">
+      <div className="w-full max-w-md font-bold text-xl md:text-2xl mb-5 mt-3 lg:mt-24">
         <h2>Login</h2>
       </div>
       <form
@@ -78,7 +79,7 @@ const LoginForm = () => {
               <FormControl>
                 <Input
                   placeholder="Email"
-                  className="h-14 text-md"
+                  className="h-12 text-md"
                   {...field}
                 />
               </FormControl>
@@ -96,7 +97,7 @@ const LoginForm = () => {
                 <Input
                   placeholder="Password"
                   type="password"
-                  className="h-14 text-md"
+                  className="h-12 text-md"
                   {...field}
                 />
               </FormControl>

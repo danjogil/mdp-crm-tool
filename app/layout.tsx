@@ -19,14 +19,12 @@ export default async function RootLayout({
 }>) {
   const currentUser = await getCurrentUser();
 
-  console.log(currentUser);
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <ToasterProvider />
-        <Navbar currentUser={currentUser} />
-        <main className="pt-20 px-3">{children}</main>
+        {currentUser && <Navbar currentUser={currentUser} />}
+        <main className="pt-">{children}</main>
       </body>
     </html>
   );
