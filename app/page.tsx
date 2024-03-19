@@ -1,5 +1,9 @@
-import Image from "next/image";
+import LoginForm from "./LoginForm";
 
 export default function Home() {
-  return <div>hello world</div>;
+  return (
+    <div className="flex flex-col items-center">
+      <LoginForm />
+    </div>
+  );
 }
