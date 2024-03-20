@@ -50,6 +50,8 @@ model Lead {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String?
   number      String?
+  email       String?
+  date        DateTime
   nationality String?
   type        String?
   budget      String?
