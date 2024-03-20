@@ -20,11 +20,11 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
 
   return (
-    <html lang="en">
+    <html lang="en" className="bg-zinc-900">
       <body className={inter.className}>
         <ToasterProvider />
         {currentUser && <NavMenu currentUser={currentUser} />}
-        <main className="pt-">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

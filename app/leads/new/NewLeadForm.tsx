@@ -16,16 +16,29 @@ import {
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { signIn } from "next-auth/react";
-import toast from "react-hot-toast";
-
 import { Input } from "@/app/components/ui/Input";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { ClipLoader } from "react-spinners";
 
 const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
+  name: z.string(),
+  number: z.string(),
+  nationality: z.string(),
+  type: z.string(),
+  budget: z.string(),
+  beds: z.string(),
+  area: z.string(),
+  property: z.string(),
+  extra: z.string(),
+  comment: z.string(),
 });
 
 const NewLeadForm = () => {
@@ -35,8 +48,16 @@ const NewLeadForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      name: "",
+      number: "",
+      nationality: "",
+      type: "",
+      budget: "",
+      beds: "",
+      area: "",
+      property: "",
+      extra: "",
+      comment: "",
     },
   });
 
@@ -45,48 +66,208 @@ const NewLeadForm = () => {
   }
   return (
     <Form {...form}>
-      <div className="max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input">
+      <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input">
         <h2 className="font-bold text-xl sm:text-3xl text-neutral-50">
           Create new lead
         </h2>
 
         <form className="my-8 space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="space-y-5">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="name@mail.com"
-                      {...field}
-                      className="bg-zinc-700 text-neutral-50"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="••••••••"
-                      type="password"
-                      {...field}
-                      className="bg-zinc-700 text-neutral-50"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <div className="space-y-5 md:space-y-0 md:gap-5 flex flex-col md:flex-row">
+            <div className="grow space-y-5">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Full name"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="number"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Number</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="000-000-0000"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="nationality"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nationality</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Spanish"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Type</FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger className="w-full bg-zinc-700 text-neutral-50 border-0 ring-offset-neutral-400">
+                          <SelectValue placeholder="Select" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-zinc-700 text-zinc-50 border-0">
+                          <SelectItem
+                            value="rent"
+                            className="focus:bg-zinc-600 focus:text-zinc-50"
+                          >
+                            To Rent
+                          </SelectItem>
+                          <SelectItem
+                            value="buy"
+                            className="focus:bg-zinc-600 focus:text-zinc-50"
+                          >
+                            To Buy
+                          </SelectItem>
+                          <SelectItem
+                            value="rentToBuy"
+                            className="focus:bg-zinc-600 focus:text-zinc-50"
+                          >
+                            Rent To Buy
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="budget"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Budget</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="€10000"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="area"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Area</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="3"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grow space-y-5">
+              <FormField
+                control={form.control}
+                name="beds"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Beds</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="3"
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="property"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Property</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Apartment, villa..."
+                        className="bg-zinc-700 text-neutral-50"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="extra"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Extra</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="comment"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Comment</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
 
           {!isLoading ? (

@@ -28,7 +28,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
 
   return (
     <NextUIProvider>
-      <Navbar disableAnimation isBordered className="bg-zinc-900">
+      <Navbar shouldHideOnScroll className="bg-zinc-900 fixed">
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle className="text-neutral-50" />
         </NavbarContent>
