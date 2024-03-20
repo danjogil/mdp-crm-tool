@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./Navbar";
+import NavMenu from "./NavMenu";
 import getCurrentUser from "./actions/getCurrentUser";
 import ToasterProvider from "./providers/ToasterProvider";
 
@@ -23,7 +23,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ToasterProvider />
-        {currentUser && <Navbar currentUser={currentUser} />}
+        {currentUser && <NavMenu currentUser={currentUser} />}
         <main className="pt-">{children}</main>
       </body>
     </html>

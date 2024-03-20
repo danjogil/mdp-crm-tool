@@ -30,9 +30,6 @@ const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        console.log(credentials.password);
-        console.log(user.hashedPassword);
-
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.hashedPassword
@@ -53,6 +50,11 @@ const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async redirect({ baseUrl }) {
+      return baseUrl + "/";
+    },
+  },
 };
 
 export default authOptions;

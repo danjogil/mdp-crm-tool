@@ -4,6 +4,8 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
+const { nextui } = require("@nextui-org/react");
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -11,6 +13,7 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "",
   theme: {
@@ -41,10 +44,12 @@ const config: Config = {
       },
     },
   },
+
   plugins: [
     require("tailwindcss-animate"),
     require("daisyui"),
     addVariablesForColors,
+    nextui(),
   ],
   daisyui: {
     themes: ["light"],
