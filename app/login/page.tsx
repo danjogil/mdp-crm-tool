@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import LoginForm from "../LoginForm";
+import LoginForm from "./LoginForm";
 import { BackgroundBeams } from "../components/ui/Beams";
 
 const LoginPage = () => {

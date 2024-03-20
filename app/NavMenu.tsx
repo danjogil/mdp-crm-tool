@@ -26,19 +26,17 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log(currentUser ? "hello" : "bye");
-
   return (
     <NextUIProvider>
-      <Navbar disableAnimation isBordered>
+      <Navbar disableAnimation isBordered className="bg-zinc-900">
         <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle />
+          <NavbarMenuToggle className="text-neutral-50" />
         </NavbarContent>
 
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <p
-              className="font-bold text-inherit cursor-pointer"
+              className="font-bold text-inherit cursor-pointer text-neutral-50"
               onClick={() =>
                 currentUser ? router.push("/dashboard") : router.push("/")
               }
@@ -51,7 +49,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
         <NavbarContent className="hidden sm:flex gap-4" justify="start">
           <NavbarBrand>
             <p
-              className="font-bold text-inherit text-xl cursor-pointer"
+              className="font-bold text-inherit text-xl cursor-pointer text-neutral-50"
               onClick={() =>
                 currentUser ? router.push("/dashboard") : router.push("/")
               }
@@ -62,18 +60,22 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
         </NavbarContent>
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem isActive={pathname === "/dashboard"}>
+          <NavbarItem>
             <Link
               href="/dashboard"
-              className="hover:bg-neutral-200 transition-colors px-2 py-1 rounded-md"
+              className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
+                pathname === "/dashboard" ? "text-zinc-50" : "text-zinc-300"
+              }`}
             >
               Dashboard
             </Link>
           </NavbarItem>
-          <NavbarItem isActive={pathname === "/leads"}>
+          <NavbarItem>
             <Link
               href="/leads"
-              className="hover:bg-neutral-200 transition-colors px-2 py-1 rounded-md"
+              className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
+                pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
+              }`}
             >
               Leads
             </Link>
@@ -84,25 +86,32 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
           <NavbarItem className="hidden lg:flex">
             <Link
               href="#"
-              className="hover:bg-neutral-200 transition-colors px-2 py-1 rounded-md"
+              className={
+                "hover:text-zinc-50 transition-colors px-2 py-1 rounded-md text-zinc-300"
+              }
               onClick={() => signOut()}
             >
               Log out
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Button>Add Lead</Button>
+            <Button
+              onClick={() => router.push("/leads/new")}
+              className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300"
+            >
+              Add Lead
+            </Button>
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarMenu>
+        <NavbarMenu className="bg-zinc-800">
           <NavbarMenuItem>
-            <Link className="w-full" href="/dashboard">
+            <Link className="w-full text-zinc-50" href="/dashboard">
               Dashboard
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link className="w-full" href="/leads">
+            <Link className="w-full text-zinc-50" href="/leads">
               Leads
             </Link>
           </NavbarMenuItem>

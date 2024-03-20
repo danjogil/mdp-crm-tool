@@ -19,7 +19,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
-import { Input } from "./components/ui/Input";
+import { Input } from "../components/ui/Input";
 
 import { ClipLoader } from "react-spinners";
 
@@ -62,10 +62,8 @@ const LoginForm = () => {
   }
   return (
     <Form {...form}>
-      <div className="max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-          Login
-        </h2>
+      <div className="max-w-md w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input">
+        <h2 className="font-bold text-xl sm:text-3xl text-neutral-50">Login</h2>
 
         <form className="my-8 space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-5">
@@ -74,9 +72,13 @@ const LoginForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="text-neutral-50">Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="name@mail.com" {...field} />
+                    <Input
+                      placeholder="name@mail.com"
+                      className="bg-zinc-700 text-neutral-50"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -87,9 +89,14 @@ const LoginForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="text-neutral-50">Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="••••••••" type="password" {...field} />
+                    <Input
+                      placeholder="••••••••"
+                      type="password"
+                      className="bg-zinc-700 text-neutral-50"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -99,14 +106,14 @@ const LoginForm = () => {
 
           {!isLoading ? (
             <button
-              className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed"
+              className="bg-gradient-to-br relative group/btn from-zinc-800 to-zinc-800 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed"
               type="submit"
             >
               Login &rarr;
               <BottomGradient />
             </button>
           ) : (
-            <button className="w-full text-white bg-neutral-400 rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] flex justify-center items-center">
+            <button className="w-full text-white bg-neutral-600 rounded-md h-10 font-medium flex justify-center items-center">
               <ClipLoader color="#fff" size={24} />
             </button>
           )}
