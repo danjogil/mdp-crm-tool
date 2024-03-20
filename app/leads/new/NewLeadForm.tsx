@@ -66,13 +66,13 @@ const NewLeadForm = () => {
   }
   return (
     <Form {...form}>
-      <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 md:p-8 shadow-input">
+      <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
         <h2 className="font-bold text-xl sm:text-3xl text-neutral-50">
           Create new lead
         </h2>
 
         <form className="my-8 space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="space-y-5 md:space-y-0 md:gap-5 flex flex-col md:flex-row">
+          <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
             <div className="grow space-y-5">
               <FormField
                 control={form.control}
@@ -240,7 +240,7 @@ const NewLeadForm = () => {
                 name="extra"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Extra</FormLabel>
+                    <FormLabel>Extra Requirements</FormLabel>
                     <FormControl>
                       <Textarea
                         className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
@@ -256,7 +256,7 @@ const NewLeadForm = () => {
                 name="comment"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Comment</FormLabel>
+                    <FormLabel>Comments</FormLabel>
                     <FormControl>
                       <Textarea
                         className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"

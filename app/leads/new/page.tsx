@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const NewLeadPage = () => {
   return (
-    <div className="mt-16 pb-4 text-white">
+    <div className="mt-16 text-white">
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

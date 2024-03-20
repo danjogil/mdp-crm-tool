@@ -24,6 +24,7 @@ model User {
   updatedAt      DateTime  @updatedAt
 
   accounts Account[]
+  leads    Lead[]
 }
 
 model Account {
@@ -43,4 +44,22 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Lead {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String?
+  number      String?
+  nationality String?
+  type        String?
+  budget      String?
+  area        String?
+  beds        String?
+  property    String?
+  extra       String?
+  comment     String?
+  createdAt   DateTime @default(now())
+  userId      String   @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
