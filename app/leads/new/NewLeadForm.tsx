@@ -38,8 +38,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const formSchema = z.object({
   name: z.string(),
@@ -79,7 +82,20 @@ const NewLeadForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data);
+    setIsLoading(true);
+    axios
+      .post("/api/leads", data)
+      .then(() => {
+        toast.success("New Lead Created!");
+        router.push("/dashboard");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   return (
     <Form {...form}>
