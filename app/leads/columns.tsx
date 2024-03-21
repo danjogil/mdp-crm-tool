@@ -26,7 +26,7 @@ export const columns: ColumnDef<Lead>[] = [
     cell: ({ row }) => {
       const name: string = row.getValue("name");
 
-      return <div className="font-light text-zinc-50">{name}</div>;
+      return <div className="font-small text-zinc-50">{name}</div>;
     },
   },
   {

@@ -66,14 +66,24 @@ export function DataTable<TData, TValue>({
             Leads
           </h1>
         </div>
-        <div className="flex items-center py-4">
+        <div className="flex flex-col sm:flex-row gap-4 items-center py-4">
           <Input
             placeholder="Filter name..."
             value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+            className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+          />
+          <Input
+            placeholder="Filter budget..."
+            value={
+              (table.getColumn("budget")?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table.getColumn("budget")?.setFilterValue(event.target.value)
+            }
+            className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
           />
         </div>
         <div className="rounded-md w-full max-w-7xl bg-zinc-900 border border-zinc-800 shadow-blue-500">
