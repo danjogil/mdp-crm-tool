@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ActionMenu = ({ id }: { id: string }) => {
   const router = useRouter();
@@ -63,7 +65,21 @@ const ActionMenu = ({ id }: { id: string }) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
+              <AlertDialogAction
+                onClick={async () => {
+                  await axios
+                    .delete(`/api/leads/${id}`)
+                    .then(() => {
+                      toast.success("Lead deleted!");
+                      router.refresh();
+                    })
+                    .catch(() => {
+                      toast.error("Something went wrong.");
+                    });
+                }}
+              >
+                Continue
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
