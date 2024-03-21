@@ -116,11 +116,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       className="relative flex flex-col gap-4 items-center justify-center z-20"
     >
       <Form {...form}>
-        <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          {/* <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
-            Edit lead
-          </h1> */}
-
+        <div className="max-w-5xl w-full mx-auto rounded-2xl px-4 sm:px-6 shadow-input border border-zinc-800">
           <form
             className="my-8 space-y-8"
             onSubmit={form.handleSubmit(onSubmit)}
@@ -136,7 +132,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="Full name"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6 border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -153,7 +149,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="000-000-0000"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -170,7 +166,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="name@email.com"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -190,7 +186,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                             <Button
                               variant={"outline"}
                               className={cn(
-                                "w-full pl-3 text-left font-normal  border-0 hover:bg-zinc-900 hover:text-zinc-50 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6 ring-offset-neutral-400",
+                                "w-full pl-3 text-left font-normal hover:bg-zinc-900 hover:text-zinc-50 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6 ring-offset-neutral-400  border border-solid border-zinc-800",
                                 !field.value && "text-muted-foreground"
                               )}
                             >
@@ -230,7 +226,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="Spanish"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -249,7 +245,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
-                          <SelectTrigger className="w-full border-0 ring-offset-neutral-400 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6">
+                          <SelectTrigger className="w-full ring-offset-neutral-400 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6 border border-solid border-zinc-800">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent className="bg-zinc-700 text-zinc-50 border-0">
@@ -287,7 +283,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="€10000"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -306,7 +302,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="Marbella, Nueva Andalucia..."
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -323,7 +319,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="3"
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -340,7 +336,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormControl>
                         <Input
                           placeholder="Apartment, villa..."
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-xl py-6  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -358,7 +354,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       </FormLabel>
                       <FormControl>
                         <Textarea
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-2xl border-0 ring-offset-zinc-900"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-xl ring-offset-zinc-900  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>
@@ -374,7 +370,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                       <FormLabel className="text-zinc-400">Comments</FormLabel>
                       <FormControl>
                         <Textarea
-                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-2xl border-0 ring-offset-zinc-900"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-xl ring-offset-zinc-900  border border-solid border-zinc-800"
                           {...field}
                         />
                       </FormControl>

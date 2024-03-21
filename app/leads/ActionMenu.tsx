@@ -52,7 +52,7 @@ const ActionMenu = ({ id }: { id: string }) => {
           </DropdownMenuItem>
         </Link>
         <AlertDialog>
-          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 w-full hover:bg-zinc-800">
+          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-zinc-800 focus:text-zinc-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-zinc-50 w-full hover:bg-zinc-800">
             Delete
           </AlertDialogTrigger>
           <AlertDialogContent>
