@@ -6,10 +6,6 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const currentUser = await getCurrentUser();
-
-  if (!currentUser) return NextResponse.error();
-
   const body = await request.json();
 
   const {
@@ -59,10 +55,6 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const currentUser = await getCurrentUser();
-
-  if (!currentUser) return NextResponse.error();
-
   const lead = await prisma.lead.findUnique({
     where: { id: params.id },
   });

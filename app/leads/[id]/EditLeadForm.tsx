@@ -63,9 +63,10 @@ const formSchema = z.object({
 
 interface Props {
   lead: Lead | null;
+  id: string;
 }
 
-const EditLeadForm: React.FC<Props> = ({ lead }) => {
+const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,7 +89,20 @@ const EditLeadForm: React.FC<Props> = ({ lead }) => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data);
+    setIsLoading(true);
+    axios
+      .patch(`/api/leads/${id}`, data)
+      .then(() => {
+        toast.success("Changes saved!");
+        router.push("/leads");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   return (
     <motion.div
