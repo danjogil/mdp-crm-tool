@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
       beds: body.beds,
       property: body.property,
       extra: body.extra,
-      comment: body.extra,
+      comment: body.comment,
       userId: currentUser.id,
     },
   });

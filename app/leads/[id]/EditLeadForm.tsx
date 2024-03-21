@@ -44,6 +44,7 @@ import { cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { Lead } from "@prisma/client";
 
 const formSchema = z.object({
   name: z.string(),
@@ -60,43 +61,34 @@ const formSchema = z.object({
   comment: z.string(),
 });
 
-const NewLeadForm = () => {
+interface Props {
+  lead: Lead | null;
+}
+
+const EditLeadForm: React.FC<Props> = ({ lead }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      number: "",
-      email: "",
-      date: new Date(),
-      nationality: "",
-      type: "",
-      budget: "",
-      beds: "",
-      area: "",
-      property: "",
-      extra: "",
-      comment: "",
+      name: lead?.name || "",
+      number: lead?.number || "",
+      email: lead?.email || "",
+      date: lead?.date,
+      nationality: lead?.nationality || "",
+      type: lead?.type || "",
+      budget: lead?.budget || "",
+      beds: lead?.beds || "",
+      area: lead?.area || "",
+      property: lead?.property || "",
+      extra: lead?.extra || "",
+      comment: lead?.comment || "",
     },
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    axios
-      .post("/api/leads", data)
-      .then(() => {
-        toast.success("New lead created!");
-        router.push("/leads");
-        router.refresh();
-      })
-      .catch(() => {
-        toast.error("Something went wrong.");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    console.log(data);
   }
   return (
     <motion.div
@@ -112,7 +104,7 @@ const NewLeadForm = () => {
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
           <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
-            Create new lead
+            Edit lead
           </h1>
 
           <form
@@ -126,11 +118,11 @@ const NewLeadForm = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel className="text-zinc-300">Name</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Full name"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -143,11 +135,11 @@ const NewLeadForm = () => {
                   name="number"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Number</FormLabel>
+                      <FormLabel className="text-zinc-300">Number</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="000-000-0000"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -160,11 +152,11 @@ const NewLeadForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="text-zinc-300">Email</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="name@email.com"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -177,14 +169,14 @@ const NewLeadForm = () => {
                   name="date"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Date</FormLabel>
+                      <FormLabel className="text-zinc-300">Date</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
                               variant={"outline"}
                               className={cn(
-                                "w-full pl-3 text-left font-normal bg-zinc-700 border-0 hover:bg-zinc-700 hover:text-zinc-50",
+                                "w-full pl-3 text-left font-normal  border-0 hover:bg-zinc-900 hover:text-zinc-50 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6 ring-offset-neutral-400",
                                 !field.value && "text-muted-foreground"
                               )}
                             >
@@ -218,11 +210,13 @@ const NewLeadForm = () => {
                   name="nationality"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nationality</FormLabel>
+                      <FormLabel className="text-zinc-300">
+                        Nationality
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Spanish"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -235,13 +229,13 @@ const NewLeadForm = () => {
                   name="type"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Type</FormLabel>
+                      <FormLabel className="text-zinc-300">Type</FormLabel>
                       <FormControl>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
-                          <SelectTrigger className="w-full bg-zinc-700 text-neutral-50 border-0 ring-offset-neutral-400">
+                          <SelectTrigger className="w-full border-0 ring-offset-neutral-400 bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent className="bg-zinc-700 text-zinc-50 border-0">
@@ -275,11 +269,11 @@ const NewLeadForm = () => {
                   name="budget"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Budget</FormLabel>
+                      <FormLabel className="text-zinc-300">Budget</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="€10000"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -294,11 +288,11 @@ const NewLeadForm = () => {
                   name="area"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Area</FormLabel>
+                      <FormLabel className="text-zinc-300">Area</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Marbella, Nueva Andalucia..."
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -311,11 +305,11 @@ const NewLeadForm = () => {
                   name="beds"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Beds</FormLabel>
+                      <FormLabel className="text-zinc-300">Beds</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="3"
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -328,11 +322,11 @@ const NewLeadForm = () => {
                   name="property"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Property</FormLabel>
+                      <FormLabel className="text-zinc-300">Property</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Apartment, villa..."
-                          className="bg-zinc-700 text-neutral-50"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 text-2xl py-6"
                           {...field}
                         />
                       </FormControl>
@@ -345,10 +339,12 @@ const NewLeadForm = () => {
                   name="extra"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Extra Requirements</FormLabel>
+                      <FormLabel className="text-zinc-300">
+                        Extra Requirements
+                      </FormLabel>
                       <FormControl>
                         <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-2xl border-0 ring-offset-zinc-900"
                           {...field}
                         />
                       </FormControl>
@@ -361,10 +357,10 @@ const NewLeadForm = () => {
                   name="comment"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Comments</FormLabel>
+                      <FormLabel className="text-zinc-300">Comments</FormLabel>
                       <FormControl>
                         <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+                          className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-2xl border-0 ring-offset-zinc-900"
                           {...field}
                         />
                       </FormControl>
@@ -380,7 +376,7 @@ const NewLeadForm = () => {
                 className="bg-gradient-to-br relative group/btn  from-zinc-800 to-zinc-800 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed"
                 type="submit"
               >
-                Add Lead &rarr;
+                Save Changes &rarr;
                 <BottomGradient />
               </button>
             ) : (
@@ -404,4 +400,4 @@ const BottomGradient = () => {
   );
 };
 
-export default NewLeadForm;
+export default EditLeadForm;
