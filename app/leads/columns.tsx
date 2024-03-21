@@ -3,6 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import ActionMenu from "./ActionMenu";
 
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 type Lead = {
   id: string;
   name: string | null;
@@ -31,7 +34,17 @@ export const columns: ColumnDef<Lead>[] = [
   },
   {
     accessorKey: "date",
-    header: () => <div className="hidden md:block">Date</div>,
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="hidden md:flex md:items-center hover:text-zinc-400 cursor-pointer transition-colors"
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const date: string = row.getValue("date");
 
@@ -42,7 +55,7 @@ export const columns: ColumnDef<Lead>[] = [
   },
   {
     accessorKey: "budget",
-    header: () => <div className="hidden md:block">Budget</div>,
+    header: () => <div className="hidden sm:block">Budget</div>,
     cell: ({ row }) => {
       const budget = parseFloat(row.getValue("budget"));
       const formatted = new Intl.NumberFormat("en-US", {
@@ -51,7 +64,7 @@ export const columns: ColumnDef<Lead>[] = [
       }).format(budget);
 
       return (
-        <div className="font-light hidden text-zinc-300 md:block">
+        <div className="font-small hidden text-zinc-50 sm:block">
           {formatted}
         </div>
       );
