@@ -39,7 +39,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/effect-button";
 import { cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -86,8 +86,8 @@ const NewLeadForm = () => {
     axios
       .post("/api/leads", data)
       .then(() => {
-        toast.success("New Lead Created!");
-        router.push("/dashboard");
+        toast.success("New lead created!");
+        router.push("/leads");
         router.refresh();
       })
       .catch(() => {
@@ -100,9 +100,9 @@ const NewLeadForm = () => {
   return (
     <Form {...form}>
       <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-        <h2 className="font-bold text-xl sm:text-3xl text-neutral-50">
+        <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
           Create new lead
-        </h2>
+        </h1>
 
         <form className="my-8 space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
@@ -163,7 +163,7 @@ const NewLeadForm = () => {
                 name="date"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Date of birth</FormLabel>
+                    <FormLabel>Date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
