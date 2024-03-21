@@ -13,7 +13,7 @@ const LeadPage: React.FC<Props> = async ({ params }) => {
   });
 
   return (
-    <div className="pt-20 text-white px-4 pb-4">
+    <div className="pt-12 text-white px-4 pb-4">
       <EditLeadForm lead={lead} id={params?.id} />
     </div>
   );

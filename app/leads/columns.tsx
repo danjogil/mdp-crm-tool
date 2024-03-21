@@ -26,7 +26,7 @@ export const columns: ColumnDef<Lead>[] = [
     cell: ({ row }) => {
       const name: string = row.getValue("name");
 
-      return <div className="font-semibold text-zinc-300">{name}</div>;
+      return <div className="font-light text-zinc-50">{name}</div>;
     },
   },
   {
@@ -36,7 +36,7 @@ export const columns: ColumnDef<Lead>[] = [
       const date: string = row.getValue("date");
 
       return (
-        <div className="font-medium text-zinc-300 hidden md:block">{date}</div>
+        <div className="font-light text-zinc-300 hidden md:block">{date}</div>
       );
     },
   },
@@ -51,7 +51,7 @@ export const columns: ColumnDef<Lead>[] = [
       }).format(budget);
 
       return (
-        <div className="font-medium hidden text-zinc-300 md:block">
+        <div className="font-light hidden text-zinc-300 md:block">
           {formatted}
         </div>
       );
@@ -64,7 +64,7 @@ export const columns: ColumnDef<Lead>[] = [
       const area: string = row.getValue("area");
 
       return (
-        <div className="font-medium text-zinc-300 hidden md:block">{area}</div>
+        <div className="font-light text-zinc-300 hidden md:block">{area}</div>
       );
     },
   },
@@ -75,7 +75,7 @@ export const columns: ColumnDef<Lead>[] = [
       const beds: string = row.getValue("beds");
 
       return (
-        <div className="font-medium text-zinc-300 hidden md:block">{beds}</div>
+        <div className="font-light text-zinc-300 hidden md:block">{beds}</div>
       );
     },
   },
@@ -86,7 +86,7 @@ export const columns: ColumnDef<Lead>[] = [
       const property: string = row.getValue("property");
 
       return (
-        <div className="font-medium text-zinc-300 hidden md:block">
+        <div className="font-light text-zinc-300 hidden md:block">
           {property}
         </div>
       );

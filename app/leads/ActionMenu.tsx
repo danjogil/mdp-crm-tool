@@ -36,7 +36,7 @@ const ActionMenu = ({ id }: { id: string }) => {
       <DropdownMenuTrigger asChild className="ml-[-35px] md:ml-0">
         <Button
           variant="ghost"
-          className="h-8 w-8 p-0 hover:bg-zinc-700 text-zinc-50 hover:text-zinc-300"
+          className="h-8 w-8 p-0 hover:bg-zinc-800 text-zinc-50 hover:text-zinc-300"
         >
           <span className="sr-only">Open menu</span>
           <MoreHorizontal className="h-4 w-4" />
@@ -44,15 +44,15 @@ const ActionMenu = ({ id }: { id: string }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="bg-zinc-700 border-zinc-500 text-zinc-50"
+        className="bg-zinc-900 border-zinc-800 text-zinc-50"
       >
         <Link href={`/leads/${id}`}>
-          <DropdownMenuItem className="cursor-pointer focus:bg-zinc-600 focus:text-zinc-50">
+          <DropdownMenuItem className="cursor-pointer focus:bg-zinc-800 focus:text-zinc-50">
             Open
           </DropdownMenuItem>
         </Link>
         <AlertDialog>
-          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 w-full hover:bg-zinc-600">
+          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 w-full hover:bg-zinc-800">
             Delete
           </AlertDialogTrigger>
           <AlertDialogContent>

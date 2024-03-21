@@ -111,7 +111,7 @@ const NewLeadForm = () => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
+          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
             Create new lead
           </h1>
 

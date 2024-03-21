@@ -117,9 +117,9 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
+          {/* <h1 className="font-bold text-xl sm:text-3xl text-neutral-50">
             Edit lead
-          </h1>
+          </h1> */}
 
           <form
             className="my-8 space-y-8"
@@ -132,7 +132,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Name</FormLabel>
+                      <FormLabel className="text-zinc-400">Name</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Full name"
@@ -149,7 +149,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="number"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Number</FormLabel>
+                      <FormLabel className="text-zinc-400">Number</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="000-000-0000"
@@ -166,7 +166,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Email</FormLabel>
+                      <FormLabel className="text-zinc-400">Email</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="name@email.com"
@@ -183,7 +183,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="date"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel className="text-zinc-300">Date</FormLabel>
+                      <FormLabel className="text-zinc-400">Date</FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -224,7 +224,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="nationality"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">
+                      <FormLabel className="text-zinc-400">
                         Nationality
                       </FormLabel>
                       <FormControl>
@@ -243,7 +243,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="type"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Type</FormLabel>
+                      <FormLabel className="text-zinc-400">Type</FormLabel>
                       <FormControl>
                         <Select
                           onValueChange={field.onChange}
@@ -283,7 +283,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="budget"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Budget</FormLabel>
+                      <FormLabel className="text-zinc-400">Budget</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="€10000"
@@ -302,7 +302,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="area"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Area</FormLabel>
+                      <FormLabel className="text-zinc-400">Area</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Marbella, Nueva Andalucia..."
@@ -319,7 +319,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="beds"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Beds</FormLabel>
+                      <FormLabel className="text-zinc-400">Beds</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="3"
@@ -336,7 +336,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="property"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Property</FormLabel>
+                      <FormLabel className="text-zinc-400">Property</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Apartment, villa..."
@@ -353,7 +353,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="extra"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">
+                      <FormLabel className="text-zinc-400">
                         Extra Requirements
                       </FormLabel>
                       <FormControl>
@@ -371,7 +371,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                   name="comment"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-zinc-300">Comments</FormLabel>
+                      <FormLabel className="text-zinc-400">Comments</FormLabel>
                       <FormControl>
                         <Textarea
                           className="bg-zinc-900 text-neutral-50 focus-visible:ring-0 focus-visible:border-0 text-2xl border-0 ring-offset-zinc-900"
