@@ -57,28 +57,37 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
+              <p className="text-zinc-300">{lead?.nationality}</p>
               <p className="text-zinc-300">{lead?.number}</p>
               <p className="text-zinc-300">{lead?.email}</p>
             </div>
           </div>
 
           <h1 className="text-xl font-medium">Requirements</h1>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-md h-full p-4 gap-3 flex flex-col text-zinc-300 mb-5">
+          <div className="h-full gap-3 flex flex-col text-zinc-300 mb-5">
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
-              <p className="uppercase">{lead?.beds} beds</p>
-              <p className="uppercase">{lead?.property}</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
-              <p className="uppercase">€{lead?.budget}</p>
-              <p className="uppercase">{lead?.area}</p>
+              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                €{lead?.budget}
+              </p>
+              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                {lead?.property}
+              </p>
+              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                {lead?.area}
+              </p>
+              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                {lead?.beds} beds
+              </p>
             </div>
           </div>
+
           <div className="flex gap-3 flex-col mb-5">
             <h1 className="text-xl font-medium">Extra Requirements</h1>
             <div className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
               {lead?.extra}
             </div>
           </div>
+
           <div className="flex gap-3 flex-col">
             <h1 className="text-xl font-medium">Comments</h1>
             <div className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
