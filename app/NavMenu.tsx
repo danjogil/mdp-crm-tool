@@ -17,6 +17,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { useState } from "react";
 
 interface NavbarProps {
   currentUser?: User | null;
@@ -26,14 +27,20 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <NextUIProvider>
       <Navbar
         shouldHideOnScroll
+        isMenuOpen={isOpen}
         className="bg-zinc-900 fixed border-b border-zinc-800"
       >
         <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle className="text-neutral-50" />
+          <NavbarMenuToggle
+            className="text-neutral-50"
+            onClick={() => setOpen(true)}
+          />
         </NavbarContent>
 
         <NavbarContent className="sm:hidden pr-3" justify="center">
@@ -109,12 +116,20 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
 
         <NavbarMenu className="bg-zinc-800">
           <NavbarMenuItem>
-            <Link className="w-full text-zinc-50" href="/dashboard">
+            <Link
+              className="w-full text-zinc-50"
+              href="/dashboard"
+              onClick={() => setOpen(false)}
+            >
               Dashboard
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link className="w-full text-zinc-50" href="/leads">
+            <Link
+              className="w-full text-zinc-50"
+              href="/leads"
+              onClick={() => setOpen(false)}
+            >
               Leads
             </Link>
           </NavbarMenuItem>
