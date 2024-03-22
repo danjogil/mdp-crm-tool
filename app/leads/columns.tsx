@@ -7,6 +7,15 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Status } from "@prisma/client";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import StatusSelect from "../components/StatusSelect";
+
 type Lead = {
   id: string;
   name: string | null;
@@ -104,6 +113,15 @@ export const columns: ColumnDef<Lead>[] = [
           {property}
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "status",
+    header: () => <div className="hidden sm:block">Status</div>,
+    cell: ({ row }) => {
+      const { id, status } = row.original;
+
+      return <StatusSelect id={id} status={status} />;
     },
   },
   {

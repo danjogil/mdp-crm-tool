@@ -13,7 +13,7 @@ import { ClipLoader } from "react-spinners";
 
 import FormDateInput from "@/app/components/FormDateInput";
 import FormInput from "@/app/components/FormInput";
-import FormSelect from "@/app/components/FormSelect";
+import FormSelect from "@/app/components/StatusSelect";
 import FormTextarea from "@/app/components/FormTextarea";
 
 import axios from "axios";
@@ -73,6 +73,7 @@ const NewLeadForm = () => {
         setIsLoading(false);
       });
   }
+
   return (
     <motion.div
       initial={{ opacity: 0.0, y: 40 }}

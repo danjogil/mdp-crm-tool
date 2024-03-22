@@ -13,7 +13,7 @@ import { ClipLoader } from "react-spinners";
 
 import FormDateInput from "@/app/components/FormDateInput";
 import FormInput from "@/app/components/FormInput";
-import FormSelect from "@/app/components/FormSelect";
+import FormSelect from "@/app/components/StatusSelect";
 import FormTextarea from "@/app/components/FormTextarea";
 
 import axios from "axios";
@@ -53,7 +53,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       email: lead?.email || "",
       date: lead?.date,
       nationality: lead?.nationality || "",
-      status: lead?.status || "ACTIVE",
+      status: lead?.status,
       budget: lead?.budget || "",
       beds: lead?.beds || "",
       area: lead?.area || "",
