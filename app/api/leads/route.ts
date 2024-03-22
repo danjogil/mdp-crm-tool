@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       email: body.email,
       date: body.date,
       nationality: body.nationality,
-      type: body.type,
+      status: body.status,
       budget: body.budget,
       area: body.area,
       beds: body.beds,

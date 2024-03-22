@@ -5,6 +5,7 @@ import ActionMenu from "./ActionMenu";
 
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Status } from "@prisma/client";
 
 type Lead = {
   id: string;
@@ -13,6 +14,7 @@ type Lead = {
   email: string | null;
   date: string | null;
   nationality: string | null;
+  status: Status;
   budget: string | null;
   area: string | null;
   beds: string | null;

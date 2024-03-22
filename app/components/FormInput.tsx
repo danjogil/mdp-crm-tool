@@ -21,6 +21,7 @@ interface Props {
       date: Date;
       email: string;
       nationality: string;
+      status: string;
       budget: string;
       beds: string;
       extra: string;

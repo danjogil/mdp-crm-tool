@@ -26,6 +26,7 @@ const formSchema = z.object({
   email: z.string(),
   date: z.date(),
   nationality: z.string(),
+  status: z.string(),
   budget: z.string(),
   beds: z.string(),
   area: z.string(),
@@ -46,6 +47,7 @@ const NewLeadForm = () => {
       email: "",
       date: new Date(),
       nationality: "",
+      status: "ACTIVE",
       budget: "",
       beds: "",
       area: "",
@@ -84,7 +86,7 @@ const NewLeadForm = () => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
+          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50 mt-3">
             Create new lead
           </h1>
 

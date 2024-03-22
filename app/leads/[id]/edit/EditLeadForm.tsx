@@ -27,6 +27,7 @@ const formSchema = z.object({
   email: z.string(),
   date: z.date(),
   nationality: z.string(),
+  status: z.string(),
   budget: z.string(),
   beds: z.string(),
   area: z.string(),
@@ -52,6 +53,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       email: lead?.email || "",
       date: lead?.date,
       nationality: lead?.nationality || "",
+      status: lead?.status || "ACTIVE",
       budget: lead?.budget || "",
       beds: lead?.beds || "",
       area: lead?.area || "",
@@ -91,7 +93,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
+          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50 mt-3">
             Edit lead
           </h1>
 
