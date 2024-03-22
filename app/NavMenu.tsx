@@ -137,7 +137,10 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
             <Link
               className="w-full text-red-600"
               href="#"
-              onClick={() => signOut()}
+              onClick={() => {
+                signOut();
+                setOpen(false);
+              }}
             >
               Log out
             </Link>
