@@ -117,7 +117,17 @@ export const columns: ColumnDef<Lead>[] = [
   },
   {
     accessorKey: "status",
-    header: () => <div className="hidden sm:block">Status</div>,
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="hidden sm:flex md:items-center hover:text-zinc-400 cursor-pointer transition-colors"
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const { id, status } = row.original;
 
