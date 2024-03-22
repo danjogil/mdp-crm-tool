@@ -19,6 +19,7 @@ import FormTextarea from "@/app/components/FormTextarea";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { Lead } from "@prisma/client";
 
 const formSchema = z.object({
   name: z.string(),
@@ -34,33 +35,38 @@ const formSchema = z.object({
   comment: z.string(),
 });
 
-const NewLeadForm = () => {
+interface Props {
+  lead: Lead | null;
+  id: string;
+}
+
+const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      number: "",
-      email: "",
-      date: new Date(),
-      nationality: "",
-      budget: "",
-      beds: "",
-      area: "",
-      property: "",
-      extra: "",
-      comment: "",
+      name: lead?.name || "",
+      number: lead?.number || "",
+      email: lead?.email || "",
+      date: lead?.date,
+      nationality: lead?.nationality || "",
+      budget: lead?.budget || "",
+      beds: lead?.beds || "",
+      area: lead?.area || "",
+      property: lead?.property || "",
+      extra: lead?.extra || "",
+      comment: lead?.comment || "",
     },
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
     axios
-      .post("/api/leads", data)
+      .patch(`/api/leads/${id}`, data)
       .then(() => {
-        toast.success("New lead created!");
+        toast.success("Changes saved!");
         router.push("/leads");
         router.refresh();
       })
@@ -71,6 +77,7 @@ const NewLeadForm = () => {
         setIsLoading(false);
       });
   }
+
   return (
     <motion.div
       initial={{ opacity: 0.0, y: 40 }}
@@ -85,7 +92,7 @@ const NewLeadForm = () => {
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
           <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
-            Create new lead
+            Edit lead
           </h1>
 
           <form
@@ -192,4 +199,4 @@ const BottomGradient = () => {
   );
 };
 
-export default NewLeadForm;
+export default EditLeadForm;

@@ -1,5 +1,6 @@
 import prisma from "@/app/libs/prismadb";
-import EditLeadForm from "./EditLeadForm-v1";
+import LeadDetails from "./LeadDetails";
+import { BackgroundBeams } from "@/app/components/ui/Beams";
 
 interface Props {
   params: { id: string };
@@ -13,9 +14,10 @@ const LeadPage: React.FC<Props> = async ({ params }) => {
   });
 
   return (
-    <div className="mt-20 text-white px-4 pb-4">
-      {/* <EditLeadForm lead={lead} id={params?.id} /> */}
-    </div>
+    <>
+      <LeadDetails lead={lead} />
+      <BackgroundBeams />
+    </>
   );
 };
 

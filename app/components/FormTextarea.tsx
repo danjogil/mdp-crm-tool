@@ -15,7 +15,6 @@ interface Props {
       number: string;
       name: string;
       area: string;
-      type: string;
       property: string;
       date: Date;
       email: string;

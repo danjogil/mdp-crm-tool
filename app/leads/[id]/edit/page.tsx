@@ -1,4 +1,5 @@
 import prisma from "@/app/libs/prismadb";
+import EditLeadForm from "./EditLeadForm";
 
 interface Props {
   params: { id: string };
@@ -11,7 +12,11 @@ const EditLeadPage: React.FC<Props> = async ({ params }) => {
     },
   });
 
-  return <div className="pt-20 px-4 pb-4 text-white">EditLeadPage</div>;
+  return (
+    <div className="mt-16 px-3 text-white">
+      <EditLeadForm lead={lead} id={params?.id} />
+    </div>
+  );
 };
 
 export default EditLeadPage;

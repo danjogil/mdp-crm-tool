@@ -13,7 +13,6 @@ type Lead = {
   email: string | null;
   date: string | null;
   nationality: string | null;
-  type: string | null;
   budget: string | null;
   area: string | null;
   beds: string | null;
