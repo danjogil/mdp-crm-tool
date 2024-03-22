@@ -41,7 +41,17 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
           </div>
           <div className="flex gap-3 sm:items-center flex-col sm:flex-row sm:justify-between mb-5 border rounded-md p-4 border-zinc-800 bg-zinc-900">
             <div className="flex gap-3 items-center">
-              <p>status</p>
+              <p
+                className={`border rounded-md p-1 px-4 ${
+                  lead?.status === "ACTIVE" && "border-green-500 text-green-500"
+                } ${
+                  lead?.status === "INACTIVE" && "border-zinc-500 text-zinc-500"
+                } ${
+                  lead?.status === "CLOSED" && "border-amber-500 text-amber-500"
+                }`}
+              >
+                {lead?.status}
+              </p>
               <p className="text-zinc-300">
                 {format(lead?.date as Date, "dd.MM.yyyy")}
               </p>
