@@ -4,46 +4,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Input } from "@/app/components/ui/Input";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { ClipLoader } from "react-spinners";
 
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import FormDateInput from "@/app/components/FormDateInput";
+import FormInput from "@/app/components/FormInput";
+import FormSelect from "@/app/components/FormSelect";
+import FormTextarea from "@/app/components/FormTextarea";
 
-import { Calendar } from "@/components/ui/calendar";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
-import { Button } from "@/components/ui/effect-button";
-import { cn } from "@/lib/utils";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   name: z.string(),
@@ -121,256 +96,78 @@ const NewLeadForm = () => {
           >
             <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
               <div className="grow space-y-5">
-                <FormField
+                <FormInput
                   control={form.control}
                   name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Full name"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Name"
+                  placeholder="Full name"
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="number"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Number</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="000-000-0000"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Number"
+                  placeholder="000-000-0000"
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="name@email.com"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Email"
+                  placeholder="name@email.com"
                 />
-                <FormField
+                <FormDateInput
                   control={form.control}
                   name="date"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Date</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal bg-zinc-700 border-0 hover:bg-zinc-700 hover:text-zinc-50",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Date"
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="nationality"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nationality</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Spanish"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Nationality"
+                  placeholder="Spanish"
                 />
-                <FormField
+                <FormSelect
                   control={form.control}
                   name="type"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Type</FormLabel>
-                      <FormControl>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <SelectTrigger className="w-full bg-zinc-700 text-neutral-50 border-0 ring-offset-neutral-400">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-zinc-700 text-zinc-50 border-0">
-                            <SelectItem
-                              value="rent"
-                              className="focus:bg-zinc-600 focus:text-zinc-50"
-                            >
-                              To Rent
-                            </SelectItem>
-                            <SelectItem
-                              value="buy"
-                              className="focus:bg-zinc-600 focus:text-zinc-50"
-                            >
-                              To Buy
-                            </SelectItem>
-                            <SelectItem
-                              value="rentToBuy"
-                              className="focus:bg-zinc-600 focus:text-zinc-50"
-                            >
-                              Rent To Buy
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Type"
+                  placeholder="Select"
+                  options={["Rent", "Buy", "Rent to Buy"]}
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Budget</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="€10000"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Budget"
+                  placeholder="€10000"
                 />
               </div>
               <div className="grow space-y-5">
-                <FormField
+                <FormInput
                   control={form.control}
                   name="area"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Area</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Marbella, Nueva Andalucia..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Area"
+                  placeholder="Marbella, Nueva Andalucia..."
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="beds"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Beds</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="3"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Beds"
+                  placeholder="3"
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="property"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Property</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Apartment, villa..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Property"
+                  placeholder="Apartment, villa..."
                 />
-                <FormField
+                <FormTextarea
                   control={form.control}
                   name="extra"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Extra Requirements</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Extra Requirements"
                 />
-                <FormField
+
+                <FormTextarea
                   control={form.control}
                   name="comment"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Comments</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Comments"
                 />
               </div>
             </div>
