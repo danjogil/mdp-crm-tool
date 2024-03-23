@@ -55,17 +55,20 @@ const ActionMenu = ({ id }: { id: string }) => {
           <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-zinc-800 focus:text-zinc-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-zinc-50 w-full hover:bg-zinc-800">
             Delete
           </AlertDialogTrigger>
-          <AlertDialogContent>
+          <AlertDialogContent className="w-[80%] rounded-md bg-zinc-900 border border-zinc-800 text-zinc-50">
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
+              <AlertDialogDescription className="text-zinc-500">
                 This action cannot be undone. This will permanently delete this
                 lead.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel className="bg-zinc-900 border border-zinc-700 text-zinc-50 hover:bg-zinc-800 hover:text-zinc-50">
+                Cancel
+              </AlertDialogCancel>
               <AlertDialogAction
+                className="bg-zinc-50 text-zinc-900 hover:bg-zinc-300 hover:text-zinc-900"
                 onClick={async () => {
                   await axios
                     .delete(`/api/leads/${id}`)
