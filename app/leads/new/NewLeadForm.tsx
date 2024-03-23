@@ -18,6 +18,7 @@ import FormTextarea from "@/app/components/FormTextarea";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   name: z.string(),
@@ -86,9 +87,20 @@ const NewLeadForm = () => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50 mt-3">
-            Create new lead
-          </h1>
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-cente mt-3">
+            <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
+              Create new lead
+            </h1>
+
+            <div>
+              <Button
+                className="bg-zinc-900 text-zinc-50 border border-zinc-700 hover:bg-zinc-800"
+                onClick={() => router.back()}
+              >
+                &larr; Go Back
+              </Button>
+            </div>
+          </div>
 
           <form
             className="my-8 space-y-8"

@@ -36,7 +36,7 @@ const ActionMenu = ({ id }: { id: string }) => {
       <DropdownMenuTrigger asChild className="ml-[-35px] md:ml-0">
         <Button
           variant="ghost"
-          className="h-8 w-8 p-0 hover:bg-zinc-800 text-zinc-50 hover:text-zinc-300"
+          className="h-8 w-8 p-0 hover:bg-zinc-800 text-zinc-50 hover:text-zinc-300 "
         >
           <span className="sr-only">Open menu</span>
           <MoreHorizontal className="h-4 w-4" />

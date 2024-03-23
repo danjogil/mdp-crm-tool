@@ -35,7 +35,7 @@ type Lead = {
 export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: "name",
-    header: () => <div className="">Name</div>,
+    header: () => <div>Name</div>,
     cell: ({ row }) => {
       const name: string = row.getValue("name");
 

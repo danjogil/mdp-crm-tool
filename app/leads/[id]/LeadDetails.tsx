@@ -7,12 +7,15 @@ import { motion } from "framer-motion";
 import { Lead } from "@prisma/client";
 import ReactMarkdown from "react-markdown";
 import StatusSelect from "@/app/components/StatusSelect";
+import { useRouter } from "next/navigation";
 
 interface Props {
   lead: Lead | null;
 }
 
 const LeadDetails: React.FC<Props> = ({ lead }) => {
+  const router = useRouter();
+
   return (
     <motion.div
       initial={{ opacity: 0.0, y: 40 }}
@@ -29,11 +32,14 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center mt-3">
             <h1 className="text-2xl sm:text-3xl font-semibold">{lead?.name}</h1>
             <div className="flex gap-3">
-              <Link href={`/leads`}>
-                <Button className="bg-zinc-900 text-zinc-50 border border-zinc-700 hover:bg-zinc-800">
+              <div>
+                <Button
+                  className="bg-zinc-900 text-zinc-50 border border-zinc-700 hover:bg-zinc-800"
+                  onClick={() => router.back()}
+                >
                   &larr; Go Back
                 </Button>
-              </Link>
+              </div>
               <Link href={`/leads/${lead?.id}/edit`}>
                 <Button className="bg-zinc-50 text-zinc-900 hover:bg-zinc-300">
                   Edit lead
