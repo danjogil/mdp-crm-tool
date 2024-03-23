@@ -131,7 +131,9 @@ export const columns: ColumnDef<Lead>[] = [
     cell: ({ row }) => {
       const { id, status } = row.original;
 
-      return <StatusSelect id={id} status={status} />;
+      return (
+        <StatusSelect id={id} status={status} className="hidden sm:flex" />
+      );
     },
   },
   {

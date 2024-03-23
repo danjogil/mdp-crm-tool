@@ -10,17 +10,18 @@ import {
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+
 import toast from "react-hot-toast";
 
 interface Props {
   id: string;
   status: string;
+  className: string;
 }
 
 const statuses = ["ACTIVE", "INACTIVE", "CLOSED"];
 
-const StatusSelect: React.FC<Props> = ({ id, status }) => {
+const StatusSelect: React.FC<Props> = ({ id, status, className }) => {
   const router = useRouter();
 
   return (
@@ -39,7 +40,7 @@ const StatusSelect: React.FC<Props> = ({ id, status }) => {
       }}
     >
       <SelectTrigger
-        className={`w-full bg-inherit text-neutral-50 ring-offset-white focus:ring-zinc-900 hidden sm:flex ${
+        className={`w-full bg-inherit text-neutral-50 ring-offset-white focus:ring-zinc-900 ${className} ${
           status === "ACTIVE" && "border border-green-500 text-green-500"
         } ${status === "INACTIVE" && "border border-zinc-500 text-zinc-500"} ${
           status === "CLOSED" && "border border-amber-500 text-amber-500"

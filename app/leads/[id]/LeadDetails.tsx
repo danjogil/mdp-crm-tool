@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { Lead } from "@prisma/client";
 import ReactMarkdown from "react-markdown";
+import StatusSelect from "@/app/components/StatusSelect";
 
 interface Props {
   lead: Lead | null;
@@ -41,9 +42,9 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
             </div>
           </div>
           <div className="flex gap-3 sm:items-center flex-col sm:flex-row sm:justify-between mb-5 border rounded-md p-4 border-zinc-800 bg-zinc-900">
-            <div className="flex gap-3 items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
               <p
-                className={`border rounded-md p-1 px-4 ${
+                className={`border rounded-md p-1 px-4 hidden sm:block ${
                   lead?.status === "ACTIVE" && "border-green-500 text-green-500"
                 } ${
                   lead?.status === "INACTIVE" && "border-zinc-500 text-zinc-500"
@@ -53,6 +54,11 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
               >
                 {lead?.status}
               </p>
+              <StatusSelect
+                id={lead?.id as string}
+                status={lead?.status as string}
+                className="flex sm:hidden max-w-xs"
+              />
               <p className="text-zinc-300">
                 {format(lead?.date as Date, "dd.MM.yyyy")}
               </p>
