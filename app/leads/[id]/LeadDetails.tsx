@@ -5,6 +5,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { Lead } from "@prisma/client";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   lead: Lead | null;
@@ -83,16 +84,16 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
 
           <div className="flex gap-3 flex-col mb-5">
             <h1 className="text-xl font-medium">Extra Requirements</h1>
-            <div className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
+            <ReactMarkdown className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
               {lead?.extra}
-            </div>
+            </ReactMarkdown>
           </div>
 
           <div className="flex gap-3 flex-col">
             <h1 className="text-xl font-medium">Comments</h1>
-            <div className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
+            <ReactMarkdown className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
               {lead?.comment}
-            </div>
+            </ReactMarkdown>
           </div>
         </div>
       </div>
