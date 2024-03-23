@@ -32,6 +32,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
   return (
     <NextUIProvider>
       <Navbar
+        maxWidth="xl"
         shouldHideOnScroll
         isMenuOpen={isOpen}
         className="bg-zinc-900 fixed border-b border-zinc-800"

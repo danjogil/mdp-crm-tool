@@ -73,7 +73,7 @@ export function DataTable<TData, TValue>({
       }}
       className="relative flex flex-col gap-4 items-center justify-center z-20"
     >
-      <div className="w-full max-w-7xl">
+      <div className="w-full max-w-6xl">
         <div className="w-full max-w-7xl">
           <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
             Leads
