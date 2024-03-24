@@ -3,9 +3,10 @@
 import { Reorder, useMotionValue, useDragControls } from "framer-motion";
 import { useRaisedShadow } from "../hooks/useRaisedShadow";
 import { ReorderIcon } from "./ReorderIcon";
+import { Task } from "@prisma/client";
 
 interface Props {
-  task: string;
+  task: Task;
 }
 
 const TaskItem: React.FC<Props> = ({ task }) => {
@@ -23,7 +24,7 @@ const TaskItem: React.FC<Props> = ({ task }) => {
       dragListener={false}
       dragControls={dragControls}
     >
-      <span className="text-sm sm:text-base">{task}</span>
+      <span className="text-sm sm:text-base">{task?.title}</span>
       <ReorderIcon dragControls={dragControls} />
     </Reorder.Item>
   );

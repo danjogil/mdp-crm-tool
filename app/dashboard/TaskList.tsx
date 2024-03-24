@@ -1,19 +1,12 @@
 "use client";
 
+import { Task } from "@prisma/client";
 import TaskItem from "./TaskItem";
 
 import { Reorder } from "framer-motion";
 import { useState } from "react";
 
-const taskArray = [
-  { task: "Book viewing for Monday" },
-  { task: "Post 3 new properties" },
-  { task: "Send client selection of apartments" },
-];
-
-const tasks = taskArray.map((item) => item.task);
-
-const TaskList = () => {
+const TaskList = ({ tasks }: { tasks: Task[] }) => {
   const [items, setItems] = useState(tasks);
 
   return (
@@ -23,8 +16,8 @@ const TaskList = () => {
       values={items}
       className="space-y-3"
     >
-      {items.map((item) => (
-        <TaskItem key={item} task={item} />
+      {items.map((task) => (
+        <TaskItem key={task.id} task={task} />
       ))}
     </Reorder.Group>
   );

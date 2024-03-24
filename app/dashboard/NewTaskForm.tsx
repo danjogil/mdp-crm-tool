@@ -19,6 +19,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { BottomGradient } from "../leads/new/NewLeadForm";
 import { ClipLoader } from "react-spinners";
 import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   title: z.string(),
@@ -27,6 +30,7 @@ const formSchema = z.object({
 });
 
 const NewTaskForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -38,8 +42,21 @@ const NewTaskForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    axios
+      .post("/api/tasks", data)
+      .then(() => {
+        toast.success("New task created!");
+        router.push("/dashboard");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
