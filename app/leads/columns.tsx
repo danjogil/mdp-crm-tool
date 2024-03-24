@@ -3,17 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import ActionMenu from "./ActionMenu";
 
-import { ArrowUpDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Status } from "@prisma/client";
+import { ArrowUpDown } from "lucide-react";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import StatusSelect from "../components/StatusSelect";
 
 type Lead = {
