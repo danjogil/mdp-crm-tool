@@ -19,7 +19,6 @@ const DashboardPage = async () => {
           <div className="grow border border-zinc-800 px-6 py-4 rounded-md bg-zinc-900 z-20 space-y-3">
             <div className="flex justify-between items-centers">
               <h1 className="font-semibold text-2xl">Tasks</h1>
-
               <TaskModal />
             </div>
             <TaskList tasks={tasks} />

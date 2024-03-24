@@ -14,8 +14,6 @@ const TaskItem: React.FC<Props> = ({ task }) => {
   const boxShadow = useRaisedShadow(y);
   const dragControls = useDragControls();
 
-  console.log(task);
-
   return (
     <Reorder.Item
       value={task}

@@ -7,7 +7,7 @@ const TaskModal = () => {
   return (
     <>
       <button
-        className="btn btn-sm"
+        className="btn btn-sm btn-circle"
         onClick={() =>
           (document.getElementById("my_modal") as HTMLDialogElement).showModal()
         }

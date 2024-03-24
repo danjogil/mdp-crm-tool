@@ -1,27 +1,25 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "@/components/ui/button";
+import { Input } from "@/app/components/ui/Input";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/app/components/ui/Input";
+
 import { Textarea } from "@/components/ui/textarea";
-import { BottomGradient } from "../leads/new/NewLeadForm";
-import { ClipLoader } from "react-spinners";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { ClipLoader } from "react-spinners";
+import { BottomGradient } from "../leads/new/NewLeadForm";
 
 const formSchema = z.object({
   title: z.string(),
@@ -30,7 +28,6 @@ const formSchema = z.object({
 });
 
 const NewTaskForm = () => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,8 +45,7 @@ const NewTaskForm = () => {
       .post("/api/tasks", data)
       .then(() => {
         toast.success("New task created!");
-        router.push("/dashboard");
-        router.refresh();
+        location.reload();
       })
       .catch(() => {
         toast.error("Something went wrong.");
