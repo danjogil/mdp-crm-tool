@@ -6,16 +6,19 @@ import { useRaisedShadow } from "../hooks/useRaisedShadow";
 import { Task } from "@prisma/client";
 
 import { FaTrashAlt, FaPen } from "react-icons/fa";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface Props {
   task: Task;
 }
 
 const TaskItem: React.FC<Props> = ({ task }) => {
+  const router = useRouter();
+
   const y = useMotionValue(0);
   const boxShadow = useRaisedShadow(y);
-
-  console.log(task);
 
   return (
     <Reorder.Item
@@ -28,7 +31,21 @@ const TaskItem: React.FC<Props> = ({ task }) => {
         <button className="btn btn-circle btn-xs">
           <FaPen />
         </button>
-        <button className="btn btn-circle btn-xs">
+        <button
+          className="btn btn-circle btn-xs"
+          onClick={async () => {
+            await axios
+              .delete(`/api/tasks/${task?.id}`)
+              .then(() => {
+                toast.success("Task deleted!");
+                // router.refresh()
+                location.reload();
+              })
+              .catch(() => {
+                toast.error("Something went wrong.");
+              });
+          }}
+        >
           <FaTrashAlt />
         </button>
       </div>
