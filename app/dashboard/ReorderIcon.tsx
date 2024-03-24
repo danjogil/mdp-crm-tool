@@ -11,7 +11,7 @@ export function ReorderIcon({ dragControls }: Props) {
       viewBox="0 0 39 39"
       // width="20"
       // height="20"
-      className="w-6 min-w-6"
+      className="w-4 min-w-4"
       onPointerDown={(event) => dragControls.start(event)}
     >
       <path

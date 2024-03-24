@@ -68,11 +68,12 @@ model Lead {
 }
 
 model Task {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  task      String
-  status    TaskStatus
-  createdAt DateTime   @default(now())
-  userId    String     @db.ObjectId
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  status      TaskStatus
+  createdAt   DateTime   @default(now())
+  userId      String     @db.ObjectId
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
