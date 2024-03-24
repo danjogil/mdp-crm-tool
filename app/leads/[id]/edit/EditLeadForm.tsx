@@ -70,7 +70,7 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       .patch(`/api/leads/${id}`, data)
       .then(() => {
         toast.success("Changes saved!");
-        router.push("/leads");
+        router.back();
         router.refresh();
       })
       .catch(() => {

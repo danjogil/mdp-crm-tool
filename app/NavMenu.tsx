@@ -29,6 +29,10 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
 
   const [isOpen, setOpen] = useState(false);
 
+  const handleOpen = () => {
+    !isOpen ? setOpen(true) : setOpen(false);
+  };
+
   return (
     <NextUIProvider>
       <Navbar
@@ -38,10 +42,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
         className="bg-zinc-900 fixed border-b border-zinc-800"
       >
         <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle
-            className="text-neutral-50"
-            onClick={() => setOpen(true)}
-          />
+          <NavbarMenuToggle className="text-neutral-50" onClick={handleOpen} />
         </NavbarContent>
 
         <NavbarContent className="sm:hidden pr-3" justify="center">
