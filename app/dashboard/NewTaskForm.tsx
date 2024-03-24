@@ -22,7 +22,7 @@ import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../leads/new/NewLeadForm";
 
 const formSchema = z.object({
-  title: z.string(),
+  title: z.string().min(1),
   description: z.string(),
   status: z.string(),
 });
