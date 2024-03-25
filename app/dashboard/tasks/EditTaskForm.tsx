@@ -28,7 +28,12 @@ const formSchema = z.object({
   status: z.string(),
 });
 
-const EditTaskForm = ({ task }: { task: Task }) => {
+interface Props {
+  task: Task;
+  onClose: () => void;
+}
+
+const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,8 +52,8 @@ const EditTaskForm = ({ task }: { task: Task }) => {
       .patch(`/api/tasks/${task?.id}`, data)
       .then(() => {
         toast.success("Changes saved!");
-        (document.getElementById("my_modal_2") as HTMLDialogElement).close();
         router.refresh();
+        onClose();
       })
       .catch(() => {
         toast.error("Something went wrong.");

@@ -1,32 +1,42 @@
+import React from "react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 import { Task } from "@prisma/client";
-import { FaPen } from "react-icons/fa";
 import EditTaskForm from "./EditTaskForm";
 
-const EditTaskModal = async ({ task }: { task: Task }) => {
+function EditTaskModal({ task, children }: { task: Task; children: string }) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <>
-      <button
-        className="btn btn-circle btn-xs"
-        onClick={() => {
-          (
-            document.getElementById("my_modal_2") as HTMLDialogElement
-          ).showModal();
-        }}
+      <div
+        className="cursor-pointer m-[-1rem] p-4 font-light text-zinc-200"
+        onClick={onOpen}
       >
-        <FaPen />
-      </button>
-      <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-zinc-900 border border-zinc-800">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-zinc-50">
-              ✕
-            </button>
-          </form>
-          <EditTaskForm task={task} />
-        </div>
-      </dialog>
+        {children}
+      </div>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="p-6 bg-zinc-900 text-zinc-50"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <EditTaskForm task={task} onClose={onClose} />
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
-};
+}
 
 export default EditTaskModal;
