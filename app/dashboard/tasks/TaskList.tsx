@@ -1,6 +1,6 @@
 "use client";
 
-import { Task } from "@prisma/client";
+import { Task, TaskStatus } from "@prisma/client";
 import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks }: { tasks: Task[] }) => {

@@ -12,6 +12,15 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { NextUIProvider } from "@nextui-org/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -127,12 +136,32 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Button
-              onClick={() => router.push("/leads/new")}
-              className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300"
-            >
-              Add Lead
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
+                  Add
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-zinc-900 border border-zinc-800 text-zinc-50">
+                <DropdownMenuItem
+                  onClick={() =>
+                    (
+                      document.getElementById("my_modal") as HTMLDialogElement
+                    ).showModal()
+                  }
+                  className="cursor-pointer"
+                >
+                  Task
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => router.push("/leads/new")}
+                  className="cursor-pointer"
+                >
+                  Lead
+                </DropdownMenuItem>
+                <DropdownMenuItem>Property</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </NavbarItem>
         </NavbarContent>
 

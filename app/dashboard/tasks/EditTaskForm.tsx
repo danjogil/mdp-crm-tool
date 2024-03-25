@@ -20,7 +20,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../../leads/new/NewLeadForm";
-import { Task, TaskStatus } from "@prisma/client";
+import { Task } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
@@ -28,16 +28,7 @@ const formSchema = z.object({
   status: z.string(),
 });
 
-interface Props {
-  task: {
-    id: string;
-    title: string;
-    description?: string;
-    status: TaskStatus;
-  };
-}
-
-const EditTaskForm: React.FC<Props> = ({ task }) => {
+const EditTaskForm = ({ task }: { task: Task }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,12 +36,10 @@ const EditTaskForm: React.FC<Props> = ({ task }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: task?.title,
-      description: task?.description,
+      description: task?.description || "",
       status: task?.status,
     },
   });
-
-  // const { reset } = useForm();
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);

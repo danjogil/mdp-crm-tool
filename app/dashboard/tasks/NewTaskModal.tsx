@@ -6,14 +6,14 @@ import NewTaskForm from "./NewTaskForm";
 const NewTaskModal = () => {
   return (
     <>
-      <button
+      {/* <button
         className="btn btn-sm btn-circle"
         onClick={() =>
           (document.getElementById("my_modal") as HTMLDialogElement).showModal()
         }
       >
         <MdAdd size={20} />
-      </button>
+      </button> */}
       <dialog id="my_modal" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-zinc-900 border border-zinc-800">
           <form method="dialog">
