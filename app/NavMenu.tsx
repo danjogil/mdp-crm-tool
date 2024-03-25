@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
+import NewTaskModal from "./dashboard/tasks/NewTaskModal";
 
 interface NavbarProps {
   currentUser?: User | null;
@@ -143,15 +144,8 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-zinc-900 border border-zinc-800 text-zinc-50">
-                <DropdownMenuItem
-                  onClick={() =>
-                    (
-                      document.getElementById("my_modal") as HTMLDialogElement
-                    ).showModal()
-                  }
-                  className="cursor-pointer"
-                >
-                  Task
+                <DropdownMenuItem className="cursor-pointer">
+                  <NewTaskModal>Task</NewTaskModal>
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => router.push("/leads/new")}

@@ -1,6 +1,5 @@
 import { BackgroundBeams } from "../components/ui/Beams";
 import Stats from "./Stats";
-import TaskList from "./tasks/TaskList";
 import prisma from "@/app/libs/prismadb";
 
 import { DataTable } from "./tasks/table/data-table";

@@ -27,7 +27,7 @@ const formSchema = z.object({
   status: z.string(),
 });
 
-const NewTaskForm = () => {
+const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,17 +40,14 @@ const NewTaskForm = () => {
     },
   });
 
-  const { reset } = useForm();
-
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
     axios
       .post("/api/tasks", data)
       .then(() => {
         toast.success("New task created!");
-        (document.getElementById("my_modal") as HTMLDialogElement).close();
-        reset();
         router.refresh();
+        onClose();
       })
       .catch(() => {
         toast.error("Something went wrong.");
