@@ -13,21 +13,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
-import { BottomGradient } from "../leads/new/NewLeadForm";
+import { BottomGradient } from "../../leads/new/NewLeadForm";
 
 const formSchema = z.object({
-  title: z.string().min(1),
+  title: z.string(),
   description: z.string(),
   status: z.string(),
 });
 
 const NewTaskForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,13 +40,17 @@ const NewTaskForm = () => {
     },
   });
 
+  const { reset } = useForm();
+
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
     axios
       .post("/api/tasks", data)
       .then(() => {
         toast.success("New task created!");
-        location.reload();
+        (document.getElementById("my_modal") as HTMLDialogElement).close();
+        reset();
+        router.refresh();
       })
       .catch(() => {
         toast.error("Something went wrong.");

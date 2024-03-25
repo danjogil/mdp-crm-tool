@@ -3,7 +3,7 @@
 import { MdAdd } from "react-icons/md";
 import NewTaskForm from "./NewTaskForm";
 
-const TaskModal = () => {
+const NewTaskModal = () => {
   return (
     <>
       <button
@@ -28,4 +28,4 @@ const TaskModal = () => {
   );
 };
 
-export default TaskModal;
+export default NewTaskModal;

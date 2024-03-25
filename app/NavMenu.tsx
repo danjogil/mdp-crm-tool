@@ -89,7 +89,27 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
                 pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
               }`}
             >
+              Tasks
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              href="/leads"
+              className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
+                pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
+              }`}
+            >
               Leads
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              href="/leads"
+              className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
+                pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
+              }`}
+            >
+              Properties
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -132,7 +152,25 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
               href="/leads"
               onClick={() => setOpen(false)}
             >
+              Tasks
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              className="w-full text-zinc-50"
+              href="/leads"
+              onClick={() => setOpen(false)}
+            >
               Leads
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              className="w-full text-zinc-50"
+              href="/leads"
+              onClick={() => setOpen(false)}
+            >
+              Properties
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
