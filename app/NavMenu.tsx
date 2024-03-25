@@ -12,22 +12,12 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
 import { NextUIProvider } from "@nextui-org/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import NewTaskModal from "./dashboard/tasks/NewTaskModal";
 
 interface NavbarProps {
   currentUser?: User | null;
@@ -137,25 +127,12 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
-                  Add
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-zinc-900 border border-zinc-800 text-zinc-50">
-                <DropdownMenuItem className="cursor-pointer">
-                  <NewTaskModal>Task</NewTaskModal>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => router.push("/leads/new")}
-                  className="cursor-pointer"
-                >
-                  Lead
-                </DropdownMenuItem>
-                <DropdownMenuItem>Property</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Button
+              onClick={() => router.push("/leads/new")}
+              className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300"
+            >
+              Add Lead
+            </Button>
           </NavbarItem>
         </NavbarContent>
 

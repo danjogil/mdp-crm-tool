@@ -36,6 +36,7 @@ interface Props {
 const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,7 +66,7 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mb-5">
         <FormField
           control={form.control}
           name="title"
@@ -111,6 +112,34 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
           </button>
         )}
       </form>
+
+      {!isDeleting ? (
+        <button
+          onClick={async () => {
+            setIsDeleting(true);
+            await axios
+              .delete(`/api/tasks/${task?.id}`)
+              .then(() => {
+                toast.success("Task deleted!");
+                router.refresh();
+                onClose();
+              })
+              .catch(() => {
+                toast.error("Something went wrong.");
+              })
+              .finally(() => {
+                setIsDeleting(false);
+              });
+          }}
+          className="bg-gradient-to-br relative group/btn hover:bg-red-800 block bg-red-700 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed transition-colors duration-400"
+        >
+          Delete task &rarr;
+        </button>
+      ) : (
+        <button className="w-full text-white bg-neutral-600 rounded-md h-10 font-medium flex justify-center items-center">
+          <ClipLoader color="#fff" size={24} />
+        </button>
+      )}
     </Form>
   );
 };
