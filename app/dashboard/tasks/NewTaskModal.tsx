@@ -1,14 +1,16 @@
 import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
-import { Task } from "@prisma/client";
-import NewTaskForm from "./NewTaskForm";
 import { ReactNode } from "react";
+import NewTaskForm from "./NewTaskForm";
 
 function NewTaskModal({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
-      <button className="cursor-pointer btn btn-circle btn-sm" onClick={onOpen}>
+      <button
+        className="cursor-pointer btn btn-ghost btn-sm hover:bg-zinc-700"
+        onClick={onOpen}
+      >
         {children}
       </button>
       <Modal

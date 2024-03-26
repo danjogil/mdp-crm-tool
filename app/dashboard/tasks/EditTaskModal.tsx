@@ -17,7 +17,9 @@ function EditTaskModal({ task, children }: { task: Task; children: string }) {
   return (
     <>
       <div
-        className="cursor-pointer m-[-1rem] p-4 font-light text-zinc-200"
+        className={`cursor-pointer m-[-1rem] p-4 font-light grow ${
+          task?.status === "COMPLETE" && "line-through text-green-500"
+        }`}
         onClick={onOpen}
       >
         {children}

@@ -36,7 +36,7 @@ const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
     defaultValues: {
       title: "",
       description: "",
-      status: "OPEN",
+      status: "INCOMPLETE",
     },
   });
 

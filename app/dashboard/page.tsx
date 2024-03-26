@@ -13,15 +13,21 @@ const DashboardPage = async () => {
   });
 
   return (
-    <div className="p-4 bg-zinc-900 text-white h-screen space-y-5">
+    <div className="p-4 bg-zinc-900 text-white h-screen space-y-5 flex-col flex items-center">
       <Stats />
       <div className="w-full flex justify-center">
         <div className="w-full max-w-6xl flex flex-col sm:flex-row gap-5">
           <div className="grow border border-zinc-800 px-6 py-4 rounded-md bg-zinc-900 z-20 min-w-md w-full">
             Viewings
           </div>
-          <DataTable columns={columns} data={tasks} />
+          <div className="z-20 sm:max-w-md w-full">
+            <DataTable columns={columns} data={tasks} />
+          </div>
         </div>
+      </div>
+
+      <div className="p-4 border border-zinc-800 bg-zinc-900 text-zinc-50 z-20 w-full max-w-6xl rounded-md mb-4">
+        bar graph
       </div>
       <BackgroundBeams />
     </div>

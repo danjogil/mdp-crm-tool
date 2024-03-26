@@ -14,19 +14,21 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import { Task } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../../leads/new/NewLeadForm";
-import { Task } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
   status: z.string(),
 });
+
+const statuses = ["INCOMPLETE", "COMPLETE"];
 
 interface Props {
   task: Task;

@@ -85,7 +85,6 @@ enum Status {
 }
 
 enum TaskStatus {
-  OPEN
-  IN_PROGRESS
-  CLOSED
+  COMPLETE
+  INCOMPLETE
 }
