@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       type: body.type,
       price: body.price,
       beds: body.beds,
-      property: body.property,
+      propertyType: body.propertyType,
       agent: body.agent,
       conditions: body.conditions,
       status: body.status,

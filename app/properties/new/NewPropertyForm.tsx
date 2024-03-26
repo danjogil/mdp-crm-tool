@@ -11,8 +11,6 @@ import { useState } from "react";
 
 import { ClipLoader } from "react-spinners";
 
-import FormInput from "@/app/components/FormInput";
-
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -66,21 +64,20 @@ const NewPropertyForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    // setIsLoading(true);
-    // axios
-    //   .post("/api/properties", data)
-    //   .then(() => {
-    //     toast.success("New lead created!");
-    //     router.push("/leads");
-    //     router.refresh();
-    //   })
-    //   .catch(() => {
-    //     toast.error("Something went wrong.");
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
-    console.log(data);
+    setIsLoading(true);
+    axios
+      .post("/api/properties", data)
+      .then(() => {
+        toast.success("New property created!");
+        router.push("/properties");
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
