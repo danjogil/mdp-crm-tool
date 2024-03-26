@@ -6,7 +6,7 @@ interface Props {
   params: { id: string };
 }
 
-const LeadPage: React.FC<Props> = async ({ params }) => {
+const PropertyPage: React.FC<Props> = async ({ params }) => {
   const property = await prisma.property.findUnique({
     where: {
       id: params?.id,
@@ -21,4 +21,4 @@ const LeadPage: React.FC<Props> = async ({ params }) => {
   );
 };
 
-export default LeadPage;
+export default PropertyPage;

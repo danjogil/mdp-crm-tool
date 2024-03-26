@@ -1,11 +1,11 @@
 import prisma from "@/app/libs/prismadb";
-import EditLeadForm from "./EditPropertyForm";
+import EditPropertyForm from "./EditPropertyForm";
 
 interface Props {
   params: { id: string };
 }
 
-const EditLeadPage: React.FC<Props> = async ({ params }) => {
+const EditPropertyPage: React.FC<Props> = async ({ params }) => {
   const property = await prisma.property.findUnique({
     where: {
       id: params?.id,
@@ -14,9 +14,9 @@ const EditLeadPage: React.FC<Props> = async ({ params }) => {
 
   return (
     <div className="mt-16 px-3 text-white">
-      <EditLeadForm property={property} id={params?.id} />
+      <EditPropertyForm property={property} id={params?.id} />
     </div>
   );
 };
 
-export default EditLeadPage;
+export default EditPropertyPage;

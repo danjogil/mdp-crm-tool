@@ -1,9 +1,8 @@
 "use client";
 
-import StatusSelect from "@/app/components/StatusSelect";
+import PropertyStatusSelect from "@/app/components/PropertyStatusSelect";
 import { Button } from "@/components/ui/button";
 import { Property } from "@prisma/client";
-import { format } from "date-fns";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,7 +30,7 @@ const PropertyDetails: React.FC<Props> = ({ property }) => {
         <div className="w-full max-w-5xl flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center mt-3">
             <h1 className="text-2xl sm:text-3xl font-semibold">
-              {/* {property?.name} */}
+              {property?.location}
             </h1>
             <div className="flex gap-3">
               <div>
@@ -44,7 +43,7 @@ const PropertyDetails: React.FC<Props> = ({ property }) => {
               </div>
               <Link href={`/properties/${property?.id}/edit`}>
                 <Button className="bg-zinc-50 text-zinc-900 hover:bg-zinc-300">
-                  Edit lead
+                  Edit property
                 </Button>
               </Link>
             </div>
@@ -62,33 +61,27 @@ const PropertyDetails: React.FC<Props> = ({ property }) => {
               >
                 {property?.status}
               </p>
-              <StatusSelect
+              <PropertyStatusSelect
                 id={property?.id as string}
                 status={property?.status as string}
                 className="flex sm:hidden max-w-xs"
               />
-              <p className="text-zinc-300">
-                {/* {format(property?.date as Date, "dd.MM.yyyy")} */}
-              </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              {/* <p className="text-zinc-300">{property?.nationality}</p>
-              <p className="text-zinc-300">{property?.number}</p>
-              <p className="text-zinc-300">{property?.email}</p> */}
+              <p className="text-zinc-100 font-medium text-xl">
+                {property?.type}
+              </p>
             </div>
           </div>
 
-          <h1 className="text-xl font-medium">Requirements</h1>
+          <h1 className="text-xl font-medium">Property Details</h1>
           <div className="h-full gap-3 flex flex-col text-zinc-300 mb-5">
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
               <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {/* €{property?.budget} */}
+                €{property?.price}
               </p>
               <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {/* {property?.property} */}
-              </p>
-              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {/* {property?.area} */}
+                {property?.propertyType}
               </p>
               <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
                 {property?.beds} beds
@@ -96,17 +89,10 @@ const PropertyDetails: React.FC<Props> = ({ property }) => {
             </div>
           </div>
 
-          <div className="flex gap-3 flex-col mb-5">
-            <h1 className="text-xl font-medium">Extra Requirements</h1>
-            <ReactMarkdown className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
-              {/* {property?.extra} */}
-            </ReactMarkdown>
-          </div>
-
           <div className="flex gap-3 flex-col">
             <h1 className="text-xl font-medium">Comments</h1>
             <ReactMarkdown className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
-              {/* {property?.comment} */}
+              {property?.comment}
             </ReactMarkdown>
           </div>
         </div>

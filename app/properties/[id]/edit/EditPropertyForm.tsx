@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { ClipLoader } from "react-spinners";
+import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -43,6 +44,7 @@ const formSchema = z.object({
   propertyType: z.string().min(1),
   agent: z.string().min(1),
   conditions: z.string(),
+  comment: z.string(),
   status: z.string(),
 });
 
@@ -65,6 +67,7 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
       propertyType: property?.propertyType,
       agent: property?.agent,
       conditions: property?.conditions || "",
+      comment: property?.comment || "",
       status: "AVAILABLE",
     },
   });
@@ -252,6 +255,22 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
                         <Input
                           placeholder=""
                           className="bg-zinc-700 text-neutral-50"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="comment"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Comment</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
                           {...field}
                         />
                       </FormControl>

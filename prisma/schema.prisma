@@ -88,6 +88,7 @@ model Property {
   propertyType String
   agent        String
   conditions   String?
+  comment      String?
   status       PropertyStatus
   createdAt    DateTime       @default(now())
   userId       String         @db.ObjectId

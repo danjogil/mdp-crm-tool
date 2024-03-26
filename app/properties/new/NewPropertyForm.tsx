@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { Textarea } from "@/components/ui/textarea";
 
 import {
   FormControl,
@@ -42,6 +43,7 @@ const formSchema = z.object({
   propertyType: z.string().min(1),
   agent: z.string().min(1),
   conditions: z.string(),
+  comment: z.string(),
   status: z.string(),
 });
 
@@ -59,6 +61,7 @@ const NewPropertyForm = () => {
       propertyType: "",
       agent: "",
       conditions: "",
+      comment: "",
       status: "AVAILABLE",
     },
   });
@@ -246,6 +249,22 @@ const NewPropertyForm = () => {
                         <Input
                           placeholder=""
                           className="bg-zinc-700 text-neutral-50"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="comment"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Comment</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
                           {...field}
                         />
                       </FormControl>

@@ -20,7 +20,7 @@ export const columns: ColumnDef<Property>[] = [
   },
   {
     accessorKey: "type",
-    header: () => <div>Type</div>,
+    header: () => <div className="hidden sm:block">Type</div>,
     cell: ({ row }) => {
       const type: string = row.getValue("type");
 
