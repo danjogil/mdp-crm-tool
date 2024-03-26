@@ -23,9 +23,10 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
-  accounts Account[]
-  leads    Lead[]
-  tasks    Task[]
+  accounts   Account[]
+  leads      Lead[]
+  tasks      Task[]
+  properties Property[]
 }
 
 model Account {
@@ -78,6 +79,19 @@ model Task {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Property {
+  id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  location  String
+  price     String
+  beds      String
+  type      String
+  status    PropertyStatus
+  createdAt DateTime       @default(now())
+  userId    String         @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 enum Status {
   ACTIVE
   INACTIVE
@@ -87,4 +101,9 @@ enum Status {
 enum TaskStatus {
   COMPLETE
   INCOMPLETE
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  UNAVAILABLE
 }

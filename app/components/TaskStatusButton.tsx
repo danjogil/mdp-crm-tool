@@ -15,7 +15,7 @@ const TaskStatusButton = ({ task }: { task: Task }) => {
 
   return (
     <button
-      className="btn btn-ghost border-none btn-xs hover:bg-zinc-600"
+      className="btn btn-ghost border-none btn-xs hover:bg-zinc-700"
       onClick={async () => {
         await axios
           .patch(`/api/tasks/${task?.id}`, { status: newStatus })

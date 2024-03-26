@@ -94,7 +94,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
           </NavbarItem>
           <NavbarItem>
             <Link
-              href="/dashboard"
+              href="/properties"
               className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
                 pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
               }`}
@@ -148,7 +148,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
           <NavbarMenuItem>
             <Link
               className="w-full text-zinc-50"
-              href="/dashboard"
+              href="/properties"
               onClick={() => setOpen(false)}
             >
               Properties
