@@ -8,22 +8,6 @@ import { ArrowUpDown } from "lucide-react";
 
 import PropertyStatusSelect from "../components/PropertyStatusSelect";
 
-// type Property = {
-//   id: string;
-//   name: string | null;
-//   number: string | null;
-//   email: string | null;
-//   date: string | null;
-//   nationality: string | null;
-//   status: Status;
-//   budget: string | null;
-//   area: string | null;
-//   beds: string | null;
-//   property: string | null;
-//   extra: string | null;
-//   comment: string | null;
-// };
-
 export const columns: ColumnDef<Property>[] = [
   {
     accessorKey: "location",
@@ -34,7 +18,17 @@ export const columns: ColumnDef<Property>[] = [
       return <div className="font-small text-zinc-50">{location}</div>;
     },
   },
+  {
+    accessorKey: "type",
+    header: () => <div>Type</div>,
+    cell: ({ row }) => {
+      const type: string = row.getValue("type");
 
+      return (
+        <div className="font-small text-zinc-50 hidden sm:block">{type}</div>
+      );
+    },
+  },
   {
     accessorKey: "price",
     header: () => <div>Price</div>,

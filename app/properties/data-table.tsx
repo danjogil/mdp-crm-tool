@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import React from "react";
+import Link from "next/link";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -79,7 +80,7 @@ export function DataTable<TData, TValue>({
             Properties
           </h1>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 items-center py-4">
+        <div className="flex gap-4 items-center justify-between py-4">
           <Input
             placeholder="Filter price..."
             value={(table.getColumn("price")?.getFilterValue() as string) ?? ""}
@@ -88,6 +89,11 @@ export function DataTable<TData, TValue>({
             }
             className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
           />
+          <Link href="/properties/new">
+            <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
+              Add property
+            </Button>
+          </Link>
         </div>
         <div className="rounded-md w-full bg-zinc-900 border border-zinc-800">
           <Table>
