@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import React from "react";
+import prisma from "@/app/libs/prismadb";
+import { BackgroundBeams } from "../components/ui/Beams";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
 
-const PropertiesPage = () => {
+const PropertiesPage = async () => {
+  const properties = await prisma.property.findMany();
+
   return (
-    <div className="pt-20 text-zinc-50 px-4 pb-4">
-      <Link href="/properties/new">
-        <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
-          Add property
-        </Button>
-      </Link>
+    <div className="px-4 pb-4 pt-20 text-white bg-zinc-900 h-screen">
+      <DataTable columns={columns} data={properties} />
+      <BackgroundBeams />
     </div>
   );
 };
