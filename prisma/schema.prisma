@@ -80,17 +80,17 @@ model Task {
 }
 
 model Property {
-  id         String         @id @default(auto()) @map("_id") @db.ObjectId
-  location   String
-  type       String
-  price      String
-  beds       String
-  property   String
-  agent      String
-  conditions String?
-  status     PropertyStatus
-  createdAt  DateTime       @default(now())
-  userId     String         @db.ObjectId
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  location     String
+  type         String
+  price        String
+  beds         String
+  propertyType String
+  agent        String
+  conditions   String?
+  status       PropertyStatus
+  createdAt    DateTime       @default(now())
+  userId       String         @db.ObjectId
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

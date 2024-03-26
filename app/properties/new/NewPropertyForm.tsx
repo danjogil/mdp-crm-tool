@@ -37,12 +37,12 @@ import {
 import { Input } from "@/app/components/ui/Input";
 
 const formSchema = z.object({
-  location: z.string(),
-  type: z.string(),
-  price: z.string(),
-  beds: z.string(),
-  property: z.string(),
-  agent: z.string(),
+  location: z.string().min(1),
+  type: z.string().min(1),
+  price: z.string().min(1),
+  beds: z.string().min(1),
+  propertyType: z.string().min(1),
+  agent: z.string().min(1),
   conditions: z.string(),
   status: z.string(),
 });
@@ -58,7 +58,7 @@ const NewPropertyForm = () => {
       type: "",
       price: "",
       beds: "",
-      property: "",
+      propertyType: "",
       agent: "",
       conditions: "",
       status: "AVAILABLE",
@@ -207,7 +207,7 @@ const NewPropertyForm = () => {
               <div className="grow space-y-5">
                 <FormField
                   control={form.control}
-                  name="property"
+                  name="propertyType"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Property Type</FormLabel>
