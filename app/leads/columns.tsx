@@ -16,10 +16,12 @@ type Lead = {
   date: string | null;
   nationality: string | null;
   status: Status;
-  budget: string | null;
+  budgetFrom: string | null;
+  budgetTo: string | null;
+  lookingFor: string | null;
   area: string | null;
   beds: string | null;
-  property: string | null;
+  propertyType: string | null;
   extra: string | null;
   comment: string | null;
 };
@@ -56,14 +58,14 @@ export const columns: ColumnDef<Lead>[] = [
     },
   },
   {
-    accessorKey: "budget",
+    accessorKey: "budgetTo",
     header: () => <div className="hidden sm:block">Budget</div>,
     cell: ({ row }) => {
-      const budget = parseFloat(row.getValue("budget"));
+      const budgetTo = parseFloat(row.getValue("budgetTo"));
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
-      }).format(budget);
+      }).format(budgetTo);
 
       return (
         <div className="font-small hidden text-zinc-50 sm:block">
@@ -95,14 +97,14 @@ export const columns: ColumnDef<Lead>[] = [
     },
   },
   {
-    accessorKey: "property",
-    header: () => <div className="hidden md:block">Property</div>,
+    accessorKey: "propertyType",
+    header: () => <div className="hidden md:block">Property Type</div>,
     cell: ({ row }) => {
-      const property: string = row.getValue("property");
+      const propertyType: string = row.getValue("propertyType");
 
       return (
         <div className="font-light text-zinc-300 hidden md:block">
-          {property}
+          {propertyType}
         </div>
       );
     },

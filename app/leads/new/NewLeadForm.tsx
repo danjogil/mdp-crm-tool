@@ -19,6 +19,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import FormSelect from "@/app/components/LeadFormSelect";
 
 const formSchema = z.object({
   name: z.string(),
@@ -27,10 +28,12 @@ const formSchema = z.object({
   date: z.date(),
   nationality: z.string(),
   status: z.string(),
-  budget: z.string(),
+  budgetFrom: z.string(),
+  budgetTo: z.string(),
+  lookingFor: z.string(),
   beds: z.string(),
   area: z.string(),
-  property: z.string(),
+  propertyType: z.string(),
   extra: z.string(),
   comment: z.string(),
 });
@@ -48,10 +51,12 @@ const NewLeadForm = () => {
       date: new Date(),
       nationality: "",
       status: "ACTIVE",
-      budget: "",
+      budgetTo: "",
+      budgetFrom: "",
+      lookingFor: "",
       beds: "",
       area: "",
-      property: "",
+      propertyType: "",
       extra: "",
       comment: "",
     },
@@ -87,7 +92,7 @@ const NewLeadForm = () => {
     >
       <Form {...form}>
         <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-cente mt-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-3">
             <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
               Create new lead
             </h1>
@@ -139,12 +144,24 @@ const NewLeadForm = () => {
                 />
                 <FormInput
                   control={form.control}
-                  name="budget"
-                  label="Budget"
+                  name="budgetFrom"
+                  label="Budget From"
+                  placeholder="€10000"
+                />
+                <FormInput
+                  control={form.control}
+                  name="budgetTo"
+                  label="Budget To"
                   placeholder="€10000"
                 />
               </div>
               <div className="grow space-y-5">
+                <FormSelect
+                  control={form.control}
+                  name="lookingFor"
+                  label="Looking For"
+                  options={["Rental", "Sale"]}
+                />
                 <FormInput
                   control={form.control}
                   name="area"
@@ -159,8 +176,8 @@ const NewLeadForm = () => {
                 />
                 <FormInput
                   control={form.control}
-                  name="property"
-                  label="Property"
+                  name="propertyType"
+                  label="Property Type"
                   placeholder="Apartment, villa..."
                 />
                 <FormTextarea

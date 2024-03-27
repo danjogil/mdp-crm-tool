@@ -13,7 +13,6 @@ import { ClipLoader } from "react-spinners";
 
 import FormDateInput from "@/app/components/LeadFormDateInput";
 import FormInput from "@/app/components/LeadFormInput";
-import FormSelect from "@/app/components/StatusSelect";
 import FormTextarea from "@/app/components/LeadFormTextarea";
 
 import axios from "axios";
@@ -21,6 +20,7 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { Lead } from "@prisma/client";
 import { Button } from "@/components/ui/button";
+import FormSelect from "@/app/components/LeadFormSelect";
 
 const formSchema = z.object({
   name: z.string(),
@@ -29,10 +29,12 @@ const formSchema = z.object({
   date: z.date(),
   nationality: z.string(),
   status: z.string(),
-  budget: z.string(),
+  budgetFrom: z.string(),
+  budgetTo: z.string(),
+  lookingFor: z.string(),
   beds: z.string(),
   area: z.string(),
-  property: z.string(),
+  propertyType: z.string(),
   extra: z.string(),
   comment: z.string(),
 });
@@ -55,10 +57,12 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       date: lead?.date,
       nationality: lead?.nationality || "",
       status: lead?.status,
-      budget: lead?.budget || "",
-      beds: lead?.beds || "",
+      budgetFrom: lead?.budgetFrom,
+      budgetTo: lead?.budgetTo,
+      lookingFor: lead?.lookingFor || "",
+      beds: lead?.beds,
       area: lead?.area || "",
-      property: lead?.property || "",
+      propertyType: lead?.propertyType || "",
       extra: lead?.extra || "",
       comment: lead?.comment || "",
     },
@@ -146,12 +150,24 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                 />
                 <FormInput
                   control={form.control}
-                  name="budget"
-                  label="Budget"
+                  name="budgetFrom"
+                  label="Budget From"
+                  placeholder="€10000"
+                />
+                <FormInput
+                  control={form.control}
+                  name="budgetTo"
+                  label="Budget To"
                   placeholder="€10000"
                 />
               </div>
               <div className="grow space-y-5">
+                <FormSelect
+                  control={form.control}
+                  name="lookingFor"
+                  label="Looking For"
+                  options={["Rental", "Sale"]}
+                />
                 <FormInput
                   control={form.control}
                   name="area"
@@ -166,8 +182,8 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
                 />
                 <FormInput
                   control={form.control}
-                  name="property"
-                  label="Property"
+                  name="propertyType"
+                  label="Property Type"
                   placeholder="Apartment, villa..."
                 />
                 <FormTextarea

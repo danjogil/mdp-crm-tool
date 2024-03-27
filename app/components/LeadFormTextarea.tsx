@@ -15,12 +15,14 @@ interface Props {
       number: string;
       name: string;
       area: string;
-      property: string;
+      propertyType: string;
       date: Date;
       email: string;
       nationality: string;
       status: string;
-      budget: string;
+      budgetTo: string;
+      budgetFrom: string;
+      lookingFor: string;
       beds: string;
       extra: string;
       comment: string;
