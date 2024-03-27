@@ -33,7 +33,6 @@ interface Props {
       date: Date;
       complexName: string;
       reference: string;
-      image: string;
       propertyLink: string;
       locationLink: string;
     },

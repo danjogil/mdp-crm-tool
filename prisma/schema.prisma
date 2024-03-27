@@ -94,7 +94,6 @@ model Property {
   conditions   String?
   comment      String?
   reference    String?
-  image        String?
   propertyLink String?
   locationLink String?
   status       PropertyStatus

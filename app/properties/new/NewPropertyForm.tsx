@@ -1,9 +1,9 @@
 "use client";
 
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "@/components/ui/form";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,11 +14,11 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
-import { Button } from "@/components/ui/button";
-import FormInput from "@/app/components/PropertyFormInput";
 import FormDateInput from "@/app/components/PropertyFormDateInput";
+import FormInput from "@/app/components/PropertyFormInput";
 import FormSelect from "@/app/components/PropertyFormSelect";
 import FormTextarea from "@/app/components/PropertyFormTextarea";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   location: z.string().min(1),
@@ -33,7 +33,6 @@ const formSchema = z.object({
   date: z.date(),
   complexName: z.string(),
   reference: z.string(),
-  image: z.string(),
   propertyLink: z.string(),
   locationLink: z.string(),
 });
@@ -57,7 +56,6 @@ const NewPropertyForm = () => {
       date: new Date(),
       complexName: "",
       reference: "",
-      image: "",
       propertyLink: "",
       locationLink: "",
     },
@@ -120,6 +118,12 @@ const NewPropertyForm = () => {
                   label="Location"
                   placeholder="Marbella, Estepona..."
                 />
+                <FormInput
+                  control={form.control}
+                  name="complexName"
+                  label="Complex Name"
+                  placeholder="Meisho Hills..."
+                />
                 <FormSelect
                   control={form.control}
                   name="type"
@@ -132,32 +136,47 @@ const NewPropertyForm = () => {
                   label="Price"
                   placeholder="€10000"
                 />
-
                 <FormInput
                   control={form.control}
                   name="beds"
                   label="Beds"
                   placeholder="3"
                 />
-              </div>
-
-              <div className="grow space-y-5">
                 <FormInput
                   control={form.control}
                   name="propertyType"
                   label="Property Type"
                   placeholder="Apartment, Villa..."
                 />
+
+                <FormDateInput
+                  control={form.control}
+                  name="date"
+                  label="Date"
+                />
+              </div>
+
+              <div className="grow space-y-5">
                 <FormInput control={form.control} name="agent" label="Agent" />
                 <FormInput
                   control={form.control}
                   name="conditions"
                   label="Conditions"
                 />
-                <FormDateInput
+                <FormInput
                   control={form.control}
-                  name="date"
-                  label="Date"
+                  name="reference"
+                  label="Reference"
+                />
+                <FormInput
+                  control={form.control}
+                  name="propertyLink"
+                  label="Property Link"
+                />
+                <FormInput
+                  control={form.control}
+                  name="locationLink"
+                  label="Location Link"
                 />
                 <FormTextarea
                   control={form.control}

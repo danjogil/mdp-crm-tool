@@ -29,7 +29,6 @@ interface Props {
       status: string;
       beds: string;
       comment: string;
-      image: string;
       location: string;
       price: string;
       propertyType: string;
