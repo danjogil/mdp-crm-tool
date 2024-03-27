@@ -112,6 +112,12 @@ const NewPropertyForm = () => {
           >
             <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
               <div className="grow space-y-5">
+                <FormSelect
+                  control={form.control}
+                  name="type"
+                  label="Type"
+                  options={["Rental", "Sale"]}
+                />
                 <FormInput
                   control={form.control}
                   name="location"
@@ -123,12 +129,6 @@ const NewPropertyForm = () => {
                   name="complexName"
                   label="Complex Name"
                   placeholder="Meisho Hills..."
-                />
-                <FormSelect
-                  control={form.control}
-                  name="type"
-                  label="Type"
-                  options={["Rental", "Sale"]}
                 />
                 <FormInput
                   control={form.control}
@@ -142,13 +142,12 @@ const NewPropertyForm = () => {
                   label="Beds"
                   placeholder="3"
                 />
-                <FormInput
+                <FormSelect
                   control={form.control}
                   name="propertyType"
                   label="Property Type"
-                  placeholder="Apartment, Villa..."
+                  options={["Apartment", "Townhouse", "Villa"]}
                 />
-
                 <FormDateInput
                   control={form.control}
                   name="date"

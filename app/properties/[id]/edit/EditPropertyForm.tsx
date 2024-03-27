@@ -10,30 +10,16 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { ClipLoader } from "react-spinners";
-import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import { Input } from "@/app/components/ui/Input";
+import FormDateInput from "@/app/components/PropertyFormDateInput";
+import FormInput from "@/app/components/PropertyFormInput";
+import FormSelect from "@/app/components/PropertyFormSelect";
+import FormTextarea from "@/app/components/PropertyFormTextarea";
 import { Property } from "@prisma/client";
 
 const formSchema = z.object({
@@ -46,6 +32,11 @@ const formSchema = z.object({
   conditions: z.string(),
   comment: z.string(),
   status: z.string(),
+  date: z.date(),
+  complexName: z.string(),
+  reference: z.string(),
+  propertyLink: z.string(),
+  locationLink: z.string(),
 });
 
 interface Props {
@@ -69,6 +60,11 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
       conditions: property?.conditions || "",
       comment: property?.comment || "",
       status: "AVAILABLE",
+      date: property?.date,
+      complexName: property?.complexName || "",
+      reference: property?.reference || "",
+      propertyLink: property?.propertyLink || "",
+      locationLink: property?.locationLink || "",
     },
   });
 
@@ -123,160 +119,75 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
           >
             <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
               <div className="grow space-y-5">
-                <FormField
-                  control={form.control}
-                  name="location"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Location</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Marbella, Estepona..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
+                <FormSelect
                   control={form.control}
                   name="type"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Type</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="bg-zinc-700 border-none">
-                            <SelectValue />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-zinc-700 text-zinc-50 border border-zinc-600">
-                          <SelectItem
-                            value="Rental"
-                            className="focus:bg-zinc-600 focus:text-zinc-50"
-                          >
-                            Rental
-                          </SelectItem>
-                          <SelectItem
-                            value="Sale"
-                            className="focus:bg-zinc-600 focus:text-zinc-50"
-                          >
-                            Sale
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Type"
+                  options={["Rental", "Sale"]}
                 />
-                <FormField
+                <FormInput
+                  control={form.control}
+                  name="location"
+                  label="Location"
+                  placeholder="Marbella, Estepona..."
+                />
+                <FormInput
+                  control={form.control}
+                  name="complexName"
+                  label="Complex Name"
+                  placeholder="Meisho Hills..."
+                />
+                <FormInput
                   control={form.control}
                   name="price"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Price</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="€10000"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Price"
+                  placeholder="€10000"
                 />
-                <FormField
+                <FormInput
                   control={form.control}
                   name="beds"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Beds</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="3"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Beds"
+                  placeholder="3"
+                />
+                <FormSelect
+                  control={form.control}
+                  name="propertyType"
+                  label="Property Type"
+                  options={["Apartment", "Townhouse", "Villa"]}
+                />
+                <FormDateInput
+                  control={form.control}
+                  name="date"
+                  label="Date"
                 />
               </div>
 
               <div className="grow space-y-5">
-                <FormField
-                  control={form.control}
-                  name="propertyType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Property Type</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Apartment, Villa..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="agent"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Agent</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Agent name..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
+                <FormInput control={form.control} name="agent" label="Agent" />
+                <FormInput
                   control={form.control}
                   name="conditions"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Conditions</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder=""
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Conditions"
                 />
-                <FormField
+                <FormInput
+                  control={form.control}
+                  name="reference"
+                  label="Reference"
+                />
+                <FormInput
+                  control={form.control}
+                  name="propertyLink"
+                  label="Property Link"
+                />
+                <FormInput
+                  control={form.control}
+                  name="locationLink"
+                  label="Location Link"
+                />
+                <FormTextarea
                   control={form.control}
                   name="comment"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Comment</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Comment"
                 />
               </div>
             </div>
@@ -286,7 +197,7 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
                 className="bg-gradient-to-br relative group/btn  from-zinc-800 to-zinc-800 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed"
                 type="submit"
               >
-                Save Changes &rarr;
+                Add Property &rarr;
                 <BottomGradient />
               </button>
             ) : (
