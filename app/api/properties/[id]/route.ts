@@ -16,6 +16,11 @@ export async function PATCH(
     agent,
     conditions,
     status,
+    date,
+    complexName,
+    reference,
+    propertyLink,
+    locationLink,
   } = body;
 
   const property = await prisma.property.findUnique({
@@ -36,6 +41,11 @@ export async function PATCH(
       agent,
       conditions,
       status,
+      date,
+      complexName,
+      reference,
+      propertyLink,
+      locationLink,
     },
   });
 

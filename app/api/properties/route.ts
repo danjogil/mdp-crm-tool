@@ -21,6 +21,11 @@ export async function POST(request: NextRequest) {
       agent: body.agent,
       conditions: body.conditions,
       status: body.status,
+      date: body.date,
+      complexName: body.complexName,
+      reference: body.reference,
+      propertyLink: body.propertyLink,
+      locationLink: body.locationLink,
       userId: currentUser?.id,
     },
   });
