@@ -17,6 +17,8 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { Textarea } from "@/components/ui/textarea";
 
+import FormInput from "@/app/components/PropertyFormInput";
+
 import {
   FormControl,
   FormField,
@@ -45,6 +47,12 @@ const formSchema = z.object({
   conditions: z.string(),
   comment: z.string(),
   status: z.string(),
+  date: z.date(),
+  complexName: z.string(),
+  reference: z.string(),
+  image: z.string(),
+  propertyLink: z.string(),
+  locationLink: z.string(),
 });
 
 const NewPropertyForm = () => {
@@ -63,6 +71,12 @@ const NewPropertyForm = () => {
       conditions: "",
       comment: "",
       status: "AVAILABLE",
+      date: new Date(),
+      complexName: "",
+      reference: "",
+      image: "",
+      propertyLink: "",
+      locationLink: "",
     },
   });
 
@@ -117,22 +131,11 @@ const NewPropertyForm = () => {
           >
             <div className="space-y-5 md:space-y-0 md:gap-8 flex flex-col md:flex-row">
               <div className="grow space-y-5">
-                <FormField
+                <FormInput
                   control={form.control}
                   name="location"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Location</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Marbella, Estepona..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Location"
+                  placeholder="Marbella, Estepona..."
                 />
                 <FormField
                   control={form.control}
@@ -168,93 +171,34 @@ const NewPropertyForm = () => {
                     </FormItem>
                   )}
                 />
-                <FormField
+
+                <FormInput
                   control={form.control}
                   name="price"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Price</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="€10000"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Price"
+                  placeholder="€10000"
                 />
-                <FormField
+
+                <FormInput
                   control={form.control}
                   name="beds"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Beds</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="3"
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Beds"
+                  placeholder="3"
                 />
               </div>
 
               <div className="grow space-y-5">
-                <FormField
+                <FormInput
                   control={form.control}
                   name="propertyType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Property Type</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Apartment, Villa..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Property Type"
+                  placeholder="Apartment, Villa..."
                 />
-                <FormField
-                  control={form.control}
-                  name="agent"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Agent</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Agent name..."
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
+                <FormInput control={form.control} name="agent" label="Agent" />
+                <FormInput
                   control={form.control}
                   name="conditions"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Conditions</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder=""
-                          className="bg-zinc-700 text-neutral-50"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Conditions"
                 />
                 <FormField
                   control={form.control}

@@ -11,10 +11,10 @@ import { useState } from "react";
 
 import { ClipLoader } from "react-spinners";
 
-import FormDateInput from "@/app/components/FormDateInput";
-import FormInput from "@/app/components/FormInput";
+import FormDateInput from "@/app/components/LeadFormDateInput";
+import FormInput from "@/app/components/LeadFormInput";
 import FormSelect from "@/app/components/StatusSelect";
-import FormTextarea from "@/app/components/FormTextarea";
+import FormTextarea from "@/app/components/LeadFormTextarea";
 
 import axios from "axios";
 import { motion } from "framer-motion";

@@ -49,21 +49,22 @@ model Account {
 }
 
 model Lead {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String?
-  number      String?
-  email       String?
-  date        DateTime
-  nationality String?
-  budget      String?
-  area        String?
-  beds        String?
-  property    String?
-  extra       String?
-  comment     String?
-  status      Status
-  createdAt   DateTime @default(now())
-  userId      String   @db.ObjectId
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String?
+  number       String?
+  email        String?
+  date         DateTime
+  nationality  String?
+  budgetFrom   String
+  budgetTo     String
+  area         String
+  beds         String
+  propertyType String
+  extra        String?
+  comment      String?
+  status       Status
+  createdAt    DateTime @default(now())
+  userId       String   @db.ObjectId
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -81,7 +82,9 @@ model Task {
 
 model Property {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  date         DateTime
   location     String
+  complexName  String?
   type         String
   price        String
   beds         String
@@ -89,6 +92,10 @@ model Property {
   agent        String
   conditions   String?
   comment      String?
+  reference    String?
+  image        String?
+  propertyLink String?
+  locationLink String?
   status       PropertyStatus
   createdAt    DateTime       @default(now())
   userId       String         @db.ObjectId
