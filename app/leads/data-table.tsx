@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import React from "react";
+import Link from "next/link";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -79,26 +80,39 @@ export function DataTable<TData, TValue>({
             Leads
           </h1>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 items-center py-4">
-          <Input
-            placeholder="Filter name..."
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
-            }
-            className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
-          />
-          <Input
-            placeholder="Filter budget..."
-            value={
-              (table.getColumn("budget")?.getFilterValue() as string) ?? ""
-            }
-            onChange={(event) =>
-              table.getColumn("budget")?.setFilterValue(event.target.value)
-            }
-            className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
-          />
+
+        <div className="flex flex-col sm:flex-row py-4 space-y-4 sm:space-y-0 sm:items-center w-full sm:space-x-4">
+          <div className="w-full">
+            <Input
+              placeholder="Filter name..."
+              value={
+                (table.getColumn("name")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("name")?.setFilterValue(event.target.value)
+              }
+              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+            />
+          </div>
+          <div className="flex gap-4 items-center justify-between w-full">
+            <Input
+              placeholder="Filter budget..."
+              value={
+                (table.getColumn("budget")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("budget")?.setFilterValue(event.target.value)
+              }
+              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+            />
+            <Link href="/leads/new">
+              <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
+                Add lead
+              </Button>
+            </Link>
+          </div>
         </div>
+
         <div className="rounded-md w-full bg-zinc-900 border border-zinc-800">
           <Table>
             <TableHeader>

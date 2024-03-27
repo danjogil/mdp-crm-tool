@@ -25,7 +25,7 @@ export const columns: ColumnDef<Property>[] = [
       const type: string = row.getValue("type");
 
       return (
-        <div className="font-small text-zinc-50 hidden sm:block">{type}</div>
+        <div className="font-light text-zinc-300 hidden sm:block">{type}</div>
       );
     },
   },
@@ -62,7 +62,7 @@ export const columns: ColumnDef<Property>[] = [
       const beds: string = row.getValue("beds");
 
       return (
-        <div className="font-small text-zinc-50 hidden sm:block">{beds}</div>
+        <div className="font-light text-zinc-300 hidden sm:block">{beds}</div>
       );
     },
   },
@@ -73,7 +73,7 @@ export const columns: ColumnDef<Property>[] = [
       const conditions: string = row.getValue("conditions");
 
       return (
-        <div className="font-small text-zinc-50 hidden sm:block">
+        <div className="font-light text-zinc-300 hidden sm:block">
           {conditions}
         </div>
       );

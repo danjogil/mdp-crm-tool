@@ -96,7 +96,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
             <Link
               href="/properties"
               className={`hover:text-zinc-50 transition-colors px-2 py-1 rounded-md ${
-                pathname === "/leads" ? "text-zinc-50" : "text-zinc-300"
+                pathname === "/properties" ? "text-zinc-50" : "text-zinc-300"
               }`}
             >
               Properties
@@ -115,14 +115,6 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
             >
               Log out
             </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              onClick={() => router.push("/leads/new")}
-              className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300"
-            >
-              Add Lead
-            </Button>
           </NavbarItem>
         </NavbarContent>
 

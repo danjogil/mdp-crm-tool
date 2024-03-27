@@ -76,21 +76,32 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
             </div>
           </div>
 
-          <h1 className="text-xl font-medium">Requirements</h1>
           <div className="h-full gap-3 flex flex-col text-zinc-300 mb-5">
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
-              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                €{lead?.budgetFrom} - €{lead?.budgetTo}
-              </p>
-              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {lead?.propertyType}
-              </p>
-              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {lead?.area}
-              </p>
-              <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
-                {lead?.beds} beds
-              </p>
+            <div className="flex flex-col gap-5 sm:gap-3 sm:flex-row sm:justify-between">
+              <div className="grow space-y-1">
+                <p className="text-zinc-300">Budget</p>
+                <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                  €{lead?.budgetFrom} - €{lead?.budgetTo}
+                </p>
+              </div>
+              <div className="grow space-y-1">
+                <p className="text-zinc-300">Property Type</p>
+                <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                  {lead?.propertyType}
+                </p>
+              </div>
+              <div className="grow space-y-1">
+                <p className="text-zinc-300">Area</p>
+                <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                  {lead?.area}
+                </p>
+              </div>
+              <div className="grow space-y-1">
+                <p className="text-zinc-300">Beds</p>
+                <p className="uppercase border border-zinc-800 p-4 rounded-md bg-zinc-900 grow">
+                  {lead?.beds} beds
+                </p>
+              </div>
             </div>
           </div>
 
