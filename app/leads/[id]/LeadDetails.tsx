@@ -112,12 +112,18 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
             </ReactMarkdown>
           </div>
 
-          <div className="flex gap-3 flex-col">
+          <div className="flex gap-3 flex-col mb-5">
             <h1 className="text-xl font-medium">Comments</h1>
             <ReactMarkdown className="border border-zinc-800 rounded-md min-h-20 p-4 bg-zinc-900">
               {lead?.comment}
             </ReactMarkdown>
           </div>
+
+          <Link href={`/leads/${lead?.id}/suggested`}>
+            <Button className="bg-zinc-50 text-zinc-900 hover:bg-zinc-300">
+              Suggested Properties
+            </Button>
+          </Link>
         </div>
       </div>
     </motion.div>
