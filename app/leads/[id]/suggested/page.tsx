@@ -16,13 +16,10 @@ const SuggestedPropertiesPage: React.FC<Props> = async ({ params }) => {
 
   const properties = await prisma.property.findMany({
     where: {
-      OR: [
-        {
-          price: { gte: lead?.budgetFrom },
-        },
-        { price: { lte: lead?.budgetTo } },
-        { beds: { gte: lead?.beds } },
-      ],
+      price: {
+        gte: lead?.budgetFrom,
+        lte: lead?.budgetTo,
+      },
     },
   });
 

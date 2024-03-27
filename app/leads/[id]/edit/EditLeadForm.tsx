@@ -57,10 +57,10 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
       date: lead?.date,
       nationality: lead?.nationality || "",
       status: lead?.status,
-      budgetFrom: lead?.budgetFrom,
-      budgetTo: lead?.budgetTo,
+      budgetFrom: String(lead?.budgetFrom),
+      budgetTo: String(lead?.budgetTo),
       lookingFor: lead?.lookingFor || "",
-      beds: lead?.beds,
+      beds: String(lead?.beds),
       area: lead?.area || "",
       propertyType: lead?.propertyType || "",
       extra: lead?.extra || "",
@@ -69,9 +69,16 @@ const EditLeadForm: React.FC<Props> = ({ lead, id }) => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    const newData = {
+      ...data,
+      budgetTo: parseInt(data.budgetTo),
+      budgetFrom: parseInt(data.budgetFrom),
+      beds: parseInt(data.beds),
+    };
+
     setIsLoading(true);
     axios
-      .patch(`/api/leads/${id}`, data)
+      .patch(`/api/leads/${id}`, newData)
       .then(() => {
         toast.success("Changes saved!");
         router.back();

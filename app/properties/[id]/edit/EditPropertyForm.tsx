@@ -53,8 +53,8 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
     defaultValues: {
       location: property?.location,
       type: property?.type,
-      price: property?.price,
-      beds: property?.beds,
+      price: String(property?.price),
+      beds: String(property?.beds),
       propertyType: property?.propertyType,
       agent: property?.agent,
       conditions: property?.conditions || "",
@@ -69,9 +69,15 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    const newData = {
+      ...data,
+      price: parseInt(data.price),
+      beds: parseInt(data.beds),
+    };
+
     setIsLoading(true);
     axios
-      .patch(`/api/properties/${id}`, data)
+      .patch(`/api/properties/${id}`, newData)
       .then(() => {
         toast.success("Changes saved!");
         router.back();

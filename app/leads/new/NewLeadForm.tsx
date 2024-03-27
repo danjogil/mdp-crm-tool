@@ -63,9 +63,16 @@ const NewLeadForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    const newData = {
+      ...data,
+      budgetTo: parseInt(data.budgetTo),
+      budgetFrom: parseInt(data.budgetFrom),
+      beds: parseInt(data.beds),
+    };
+
     setIsLoading(true);
     axios
-      .post("/api/leads", data)
+      .post("/api/leads", newData)
       .then(() => {
         toast.success("New lead created!");
         router.push("/leads");

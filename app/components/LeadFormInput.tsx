@@ -36,7 +36,13 @@ interface Props {
   placeholder: string;
 }
 
-const FormInput: React.FC<Props> = ({ control, name, label, placeholder }) => {
+const FormInput: React.FC<Props> = ({
+  control,
+  name,
+  label,
+  placeholder,
+  type,
+}) => {
   return (
     <FormField
       control={control}
@@ -46,6 +52,7 @@ const FormInput: React.FC<Props> = ({ control, name, label, placeholder }) => {
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Input
+              type={type}
               placeholder={placeholder}
               className="bg-zinc-700 text-neutral-50"
               {...field}

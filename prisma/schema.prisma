@@ -56,10 +56,10 @@ model Lead {
   date         DateTime
   lookingFor   String
   nationality  String?
-  budgetFrom   String
-  budgetTo     String
+  budgetFrom   Int
+  budgetTo     Int
   area         String
-  beds         String
+  beds         Int
   propertyType String
   extra        String?
   comment      String?
@@ -87,8 +87,8 @@ model Property {
   location     String
   complexName  String?
   type         String
-  price        String
-  beds         String
+  price        Int
+  beds         Int
   propertyType String
   agent        String
   conditions   String?

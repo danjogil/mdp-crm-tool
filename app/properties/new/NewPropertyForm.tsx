@@ -62,9 +62,15 @@ const NewPropertyForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    const newData = {
+      ...data,
+      price: parseInt(data.price),
+      beds: parseInt(data.beds),
+    };
+
     setIsLoading(true);
     axios
-      .post("/api/properties", data)
+      .post("/api/properties", newData)
       .then(() => {
         toast.success("New property created!");
         router.push("/properties");
