@@ -67,6 +67,19 @@ export const columns: ColumnDef<Property>[] = [
     },
   },
   {
+    accessorKey: "conditions",
+    header: () => <div className="hidden md:block">Conditions</div>,
+    cell: ({ row }) => {
+      const conditions: string = row.getValue("conditions");
+
+      return (
+        <div className="font-small text-zinc-50 hidden sm:block">
+          {conditions}
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: "status",
     header: ({ column }) => {
       return (

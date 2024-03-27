@@ -80,21 +80,39 @@ export function DataTable<TData, TValue>({
             Properties
           </h1>
         </div>
-        <div className="flex gap-4 items-center justify-between py-4">
-          <Input
-            placeholder="Filter price..."
-            value={(table.getColumn("price")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("price")?.setFilterValue(event.target.value)
-            }
-            className="sm:max-w-sm bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
-          />
-          <Link href="/properties/new">
-            <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
-              Add property
-            </Button>
-          </Link>
+
+        <div className="flex flex-col sm:flex-row py-4 space-y-4 sm:space-y-0 sm:items-center w-full sm:space-x-4">
+          <div className="w-full">
+            <Input
+              placeholder="Filter location..."
+              value={
+                (table.getColumn("location")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("location")?.setFilterValue(event.target.value)
+              }
+              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+            />
+          </div>
+          <div className="flex gap-4 items-center justify-between w-full">
+            <Input
+              placeholder="Filter price..."
+              value={
+                (table.getColumn("price")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("price")?.setFilterValue(event.target.value)
+              }
+              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+            />
+            <Link href="/properties/new">
+              <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
+                Add property
+              </Button>
+            </Link>
+          </div>
         </div>
+
         <div className="rounded-md w-full bg-zinc-900 border border-zinc-800">
           <Table>
             <TableHeader>
@@ -140,7 +158,7 @@ export function DataTable<TData, TValue>({
                 <TableRow>
                   <TableCell
                     colSpan={columns.length}
-                    className="h-24 text-center"
+                    className="h-24 text-center hover:bg-zinc-900 bg-zinc-900"
                   >
                     No results.
                   </TableCell>
