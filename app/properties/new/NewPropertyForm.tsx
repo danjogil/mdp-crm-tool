@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Form } from "@/components/ui/form";
 
 import { useRouter } from "next/navigation";
@@ -11,31 +10,15 @@ import { useState } from "react";
 
 import { ClipLoader } from "react-spinners";
 
-import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import { Textarea } from "@/components/ui/textarea";
 
+import { Button } from "@/components/ui/button";
 import FormInput from "@/app/components/PropertyFormInput";
-
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import { Input } from "@/app/components/ui/Input";
+import FormDateInput from "@/app/components/PropertyFormDateInput";
+import FormSelect from "@/app/components/PropertyFormSelect";
+import FormTextarea from "@/app/components/PropertyFormTextarea";
 
 const formSchema = z.object({
   location: z.string().min(1),
@@ -137,41 +120,12 @@ const NewPropertyForm = () => {
                   label="Location"
                   placeholder="Marbella, Estepona..."
                 />
-                <FormField
+                <FormSelect
                   control={form.control}
                   name="type"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Type</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="bg-zinc-700 border-none">
-                            <SelectValue />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-zinc-700 text-zinc-50 border border-zinc-600">
-                          <SelectItem
-                            value="Rental"
-                            className="focus:bg-zinc-600 focus:text-zinc-50"
-                          >
-                            Rental
-                          </SelectItem>
-                          <SelectItem
-                            value="Sale"
-                            className="focus:bg-zinc-600 focus:text-zinc-50"
-                          >
-                            Sale
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Type"
+                  options={["Rental", "Sale"]}
                 />
-
                 <FormInput
                   control={form.control}
                   name="price"
@@ -200,21 +154,15 @@ const NewPropertyForm = () => {
                   name="conditions"
                   label="Conditions"
                 />
-                <FormField
+                <FormDateInput
+                  control={form.control}
+                  name="date"
+                  label="Date"
+                />
+                <FormTextarea
                   control={form.control}
                   name="comment"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Comment</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  label="Comment"
                 />
               </div>
             </div>

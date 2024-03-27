@@ -12,18 +12,21 @@ import { Control } from "react-hook-form";
 interface Props {
   control: Control<
     {
-      number: string;
-      name: string;
-      area: string;
-      property: string;
+      type: string;
       date: Date;
-      email: string;
-      nationality: string;
       status: string;
-      budget: string;
       beds: string;
-      extra: string;
       comment: string;
+      image: string;
+      location: string;
+      price: string;
+      propertyType: string;
+      agent: string;
+      conditions: string;
+      complexName: string;
+      reference: string;
+      propertyLink: string;
+      locationLink: string;
     },
     any
   >;

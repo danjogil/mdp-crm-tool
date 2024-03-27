@@ -54,6 +54,7 @@ model Lead {
   number       String?
   email        String?
   date         DateTime
+  lookingFor   String
   nationality  String?
   budgetFrom   String
   budgetTo     String
