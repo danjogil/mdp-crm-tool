@@ -14,6 +14,9 @@ const SuggestedPropertiesPage: React.FC<Props> = async ({ params }) => {
     },
   });
 
+  const x = lead?.propertyType.replaceAll(",", "");
+  const propertyTypeArray = x?.split(" ");
+
   const properties = await prisma.property.findMany({
     where: {
       price: {
@@ -24,6 +27,10 @@ const SuggestedPropertiesPage: React.FC<Props> = async ({ params }) => {
         gte: lead?.beds,
       },
       status: "AVAILABLE",
+      propertyType: {
+        in: propertyTypeArray,
+        mode: "insensitive",
+      },
     },
   });
 

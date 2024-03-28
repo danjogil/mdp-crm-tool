@@ -57,12 +57,6 @@ export function DataTable<TData, TValue>({
       pagination: {
         pageSize: 6,
       },
-      sorting: [
-        {
-          id: "status",
-          desc: false,
-        },
-      ],
     },
   });
 
