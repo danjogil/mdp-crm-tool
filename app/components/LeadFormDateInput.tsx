@@ -59,7 +59,7 @@ const FormDateInput: React.FC<Props> = ({ control, name, label }) => {
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-full pl-3 text-left font-normal dark:bg-zinc-700 bg-zinc-50 dark:border-0 dark:hover:bg-zinc-700 dark:hover:text-zinc-50 shadow-sm",
+                    "w-full pl-3 text-left font-normal border dark:border-zinc-700 dark:bg-zinc-800 bg-zinc-50 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 shadow-sm",
                     !field.value && "text-muted-foreground"
                   )}
                 >

@@ -3,7 +3,7 @@ import NewPropertyForm from "./NewPropertyForm";
 
 const NewPropertyPage = () => {
   return (
-    <div className="mt-16 text-zinc-50 px-4 pb-4">
+    <div className="pt-16 dark:text-zinc-50 px-4 pb-4 dark:bg-zinc-900">
       <NewPropertyForm />
     </div>
   );

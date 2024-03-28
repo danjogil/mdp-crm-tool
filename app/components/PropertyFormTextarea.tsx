@@ -43,7 +43,7 @@ const FormTextarea: React.FC<Props> = ({ control, name, label }) => {
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Textarea
-              className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+              className="dark:bg-zinc-800 border dark:border-zinc-700 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400 shadow bg-zinc-50"
               {...field}
             />
           </FormControl>

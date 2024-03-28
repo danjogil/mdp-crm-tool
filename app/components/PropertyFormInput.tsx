@@ -45,11 +45,7 @@ const FormInput: React.FC<Props> = ({ control, name, label, placeholder }) => {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input
-              placeholder={placeholder}
-              className="bg-zinc-700 text-neutral-50"
-              {...field}
-            />
+            <Input placeholder={placeholder} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>

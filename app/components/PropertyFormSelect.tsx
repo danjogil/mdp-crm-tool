@@ -53,16 +53,16 @@ const FormSelect: React.FC<Props> = ({ control, name, label, options }) => {
           <FormLabel>{label}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger className="bg-zinc-700 border-none">
+              <SelectTrigger className="dark:bg-zinc-800 dark:border-zinc-700 bg-zinc-50 shadow">
                 <SelectValue />
               </SelectTrigger>
             </FormControl>
-            <SelectContent className="bg-zinc-700 text-zinc-50 border border-zinc-600">
+            <SelectContent className="dark:bg-zinc-800 dark:text-zinc-50 border dark:border-zinc-700 bg-zinc-50">
               {options.map((item) => (
                 <SelectItem
                   key={item}
                   value={item}
-                  className="focus:bg-zinc-600 focus:text-zinc-50"
+                  className="dark:focus:bg-zinc-700 dark:focus:text-zinc-50"
                 >
                   {item}
                 </SelectItem>
