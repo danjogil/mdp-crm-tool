@@ -41,9 +41,14 @@ const StatusSelect: React.FC<Props> = ({ id, status, className }) => {
     >
       <SelectTrigger
         className={`w-full dark:bg-zinc-900 dark:border-zinc-800 border dark:text-neutral-50 dark:ring-offset-white dark:focus:ring-zinc-900 ${className} ${
-          status === "ACTIVE" && "border border-green-500 text-green-500"
-        } ${status === "INACTIVE" && "border border-zinc-500 text-zinc-500"} ${
-          status === "CLOSED" && "border border-amber-500 text-amber-500"
+          status === "ACTIVE" &&
+          "border border-green-500 text-green-500 dark:border-green-500 dark:text-green-500"
+        } ${
+          status === "INACTIVE" &&
+          "border border-zinc-500 text-zinc-500 dark:border-zinc-500 dark:text-zinc-500"
+        } ${
+          status === "CLOSED" &&
+          "border dark:border-amber-500 dark:text-amber-500 border-amber-500 text-amber-500"
         }`}
       >
         <SelectValue />
