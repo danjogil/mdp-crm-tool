@@ -36,7 +36,7 @@ const ActionMenu = ({ id }: { id: string }) => {
       <DropdownMenuTrigger asChild className="ml-[-35px] md:ml-0">
         <Button
           variant="ghost"
-          className="h-8 w-8 p-0 hover:bg-zinc-800 text-zinc-50 hover:text-zinc-300 "
+          className="h-8 w-8 p-0 dark:hover:bg-zinc-800 dark:text-zinc-50 dark:hover:text-zinc-300 "
         >
           <span className="sr-only">Open menu</span>
           <MoreHorizontal className="h-4 w-4" />
@@ -44,36 +44,36 @@ const ActionMenu = ({ id }: { id: string }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="bg-zinc-900 border-zinc-800 text-zinc-50"
+        className="dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-50"
       >
         <Link href={`/properties/${id}`}>
-          <DropdownMenuItem className="cursor-pointer focus:bg-zinc-800 focus:text-zinc-50">
+          <DropdownMenuItem className="cursor-pointer dark:focus:bg-zinc-800 dark:focus:text-zinc-50">
             Open
           </DropdownMenuItem>
         </Link>
         <AlertDialog>
-          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-zinc-800 focus:text-zinc-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-zinc-50 w-full hover:bg-zinc-800">
+          <AlertDialogTrigger className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors dark:focus:bg-zinc-800 dark:focus:text-zinc-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 w-full dark:hover:bg-zinc-800 hover:bg-slate-100">
             Delete
           </AlertDialogTrigger>
-          <AlertDialogContent className="w-[80%] rounded-md bg-zinc-900 border border-zinc-800 text-zinc-50">
+          <AlertDialogContent className="w-[80%] rounded-md dark:bg-zinc-900 dark:border dark:border-zinc-800 dark:text-zinc-50">
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription className="text-zinc-500">
+              <AlertDialogDescription className="dark:text-zinc-500">
                 This action cannot be undone. This will permanently delete this
                 property.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="bg-zinc-900 border border-zinc-700 text-zinc-50 hover:bg-zinc-800 hover:text-zinc-50">
+              <AlertDialogCancel className="dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-800 dark:hover:text-zinc-50">
                 Cancel
               </AlertDialogCancel>
               <AlertDialogAction
-                className="bg-zinc-50 text-zinc-900 hover:bg-zinc-300 hover:text-zinc-900"
+                className="dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300 dark:hover:text-zinc-900"
                 onClick={async () => {
                   await axios
-                    .delete(`/api/properties/${id}`)
+                    .delete(`/api/leads/${id}`)
                     .then(() => {
-                      toast.success("Property deleted!");
+                      toast.success("Lead deleted!");
                       router.refresh();
                     })
                     .catch(() => {

@@ -14,10 +14,10 @@ const PropertyPage: React.FC<Props> = async ({ params }) => {
   });
 
   return (
-    <>
+    <div className="dark:bg-zinc-900">
       <PropertyDetails property={property} />
-      <BackgroundBeams />
-    </>
+      {/* <BackgroundBeams /> */}
+    </div>
   );
 };
 

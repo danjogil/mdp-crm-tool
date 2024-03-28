@@ -41,7 +41,7 @@ const LeadDetails: React.FC<Props> = ({ lead }) => {
                 </Button>
               </div>
               <Link href={`/leads/${lead?.id}/edit`}>
-                <Button className="">Edit lead</Button>
+                <Button>Edit lead</Button>
               </Link>
             </div>
           </div>
