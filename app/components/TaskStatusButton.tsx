@@ -3,10 +3,8 @@
 import { Task } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React from "react";
 import toast from "react-hot-toast";
 import { FaCheck } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
 
 const TaskStatusButton = ({ task }: { task: Task }) => {
   const router = useRouter();
@@ -15,7 +13,7 @@ const TaskStatusButton = ({ task }: { task: Task }) => {
 
   return (
     <button
-      className="btn btn-ghost border-none btn-xs hover:bg-zinc-700"
+      className="btn btn-ghost border-none btn-xs dark:hover:bg-zinc-700"
       onClick={async () => {
         await axios
           .patch(`/api/tasks/${task?.id}`, { status: newStatus })

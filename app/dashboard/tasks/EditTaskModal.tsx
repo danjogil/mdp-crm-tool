@@ -27,7 +27,7 @@ function EditTaskModal({ task, children }: { task: Task; children: string }) {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        className="p-6 bg-zinc-900 text-zinc-50"
+        className="p-6 dark:bg-zinc-900 dark:text-zinc-50"
       >
         <ModalContent>
           {(onClose) => (

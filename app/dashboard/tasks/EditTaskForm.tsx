@@ -76,7 +76,10 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input className="bg-zinc-700 text-neutral-50" {...field} />
+                <Input
+                  className="dark:bg-zinc-700 dark:text-neutral-50"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -91,7 +94,7 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Textarea
-                  className="bg-zinc-700 border-0 ring-offset-neutral-400 text-neutral-50 transition duration-400"
+                  className="dark:bg-zinc-700 bg-slate-50 dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
                   {...field}
                 />
               </FormControl>
@@ -133,7 +136,7 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
                 setIsDeleting(false);
               });
           }}
-          className="bg-gradient-to-br relative group/btn hover:bg-red-800 block bg-red-700 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed transition-colors duration-400"
+          className="bg-gradient-to-br relative group/btn dark:hover:bg-red-800 hover:bg-red-700 block dark:bg-red-700 bg-red-600 w-full text-white rounded-md h-10 font-medium disabled:cursor-not-allowed transition-colors duration-400"
         >
           Delete task &rarr;
         </button>

@@ -8,7 +8,7 @@ function NewTaskModal({ children }: { children: ReactNode }) {
   return (
     <>
       <button
-        className="cursor-pointer btn btn-ghost btn-sm hover:bg-zinc-700"
+        className="cursor-pointer btn btn-ghost btn-sm dark:hover:bg-zinc-700"
         onClick={onOpen}
       >
         {children}
@@ -16,7 +16,7 @@ function NewTaskModal({ children }: { children: ReactNode }) {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        className="p-6 bg-zinc-900 text-zinc-50"
+        className="p-6 dark:bg-zinc-900 dark:text-zinc-50"
       >
         <ModalContent>
           {(onClose) => (

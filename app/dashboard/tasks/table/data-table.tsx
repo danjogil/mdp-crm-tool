@@ -32,17 +32,17 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md w-full bg-zinc-900 border border-zinc-800 z-20">
+    <div className="rounded-md w-full dark:bg-zinc-900 border dark:border-zinc-800 z-20">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow
               key={headerGroup.id}
-              className="hover:bg-zinc-900 border-zinc-800"
+              className="dark:hover:bg-zinc-900 dark:border-zinc-800 hover:bg-white"
             >
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="text-zinc-50">
+                  <TableHead key={header.id} className="dark:text-zinc-50">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -61,7 +61,7 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="hover:bg-zinc-800 border-zinc-800"
+                className="dark:hover:bg-zinc-800 dark:border-zinc-800"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
             <TableRow>
               <TableCell
                 colSpan={columns.length}
-                className="h-24 text-center hover:bg-zinc-900 bg-zinc-900"
+                className="h-24 text-center dark:hover:bg-zinc-900 dark:bg-zinc-900"
               >
                 No results.
               </TableCell>

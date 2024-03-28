@@ -12,7 +12,7 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "title",
     header: () => (
       <div className="flex justify-between items-center">
-        <div className="text-xl font-base text-zinc-100">Tasks</div>
+        <div className="text-xl dark:font-base dark:text-zinc-100">Tasks</div>
         <NewTaskModal>
           <IoMdAdd className="font-bold" size={20} />
         </NewTaskModal>

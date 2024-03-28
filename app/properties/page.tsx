@@ -9,7 +9,7 @@ const PropertiesPage = async () => {
   return (
     <div className="px-4 pb-4 pt-20 text-white bg-zinc-900 h-screen">
       <DataTable columns={columns} data={properties} />
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 };
