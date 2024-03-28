@@ -24,7 +24,7 @@ const SuggestedPropertiesPage: React.FC<Props> = async ({ params }) => {
   });
 
   return (
-    <div className="pt-20 px-4 pb-4 text-zinc-50">
+    <div className="pt-20 px-4 pb-4 dark:text-zinc-50 dark:bg-zinc-900">
       <DataTable columns={columns} data={properties} />
     </div>
   );
