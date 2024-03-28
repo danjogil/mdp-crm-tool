@@ -20,6 +20,10 @@ const SuggestedPropertiesPage: React.FC<Props> = async ({ params }) => {
         gte: lead?.budgetFrom,
         lte: lead?.budgetTo,
       },
+      beds: {
+        gte: lead?.beds,
+      },
+      status: "AVAILABLE",
     },
   });
 
