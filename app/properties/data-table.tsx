@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
     >
       <div className="w-full max-w-6xl">
         <div className="w-full max-w-7xl">
-          <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
+          <h1 className="font-bold text-2xl sm:text-3xl dark:text-neutral-50">
             Properties
           </h1>
         </div>
@@ -91,7 +91,7 @@ export function DataTable<TData, TValue>({
               onChange={(event) =>
                 table.getColumn("location")?.setFilterValue(event.target.value)
               }
-              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+              className="dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-300 border dark:border-zinc-800 dark:ring-offset-zinc-700 dark:focus-visible:ring-0 ring-offset-0 transition duration-400 shadow"
             />
           </div>
           <div className="flex gap-4 items-center justify-between w-full">
@@ -103,27 +103,25 @@ export function DataTable<TData, TValue>({
               onChange={(event) =>
                 table.getColumn("price")?.setFilterValue(event.target.value)
               }
-              className="bg-zinc-900 text-zinc-50 placeholder:text-zinc-300 border border-zinc-800 ring-offset-zinc-700 focus-visible:ring-0 ring-offset-0 transition duration-400"
+              className="dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-300 border dark:border-zinc-800 dark:ring-offset-zinc-700 dark:focus-visible:ring-0 ring-offset-0 transition duration-400 shadow"
             />
             <Link href="/properties/new">
-              <Button className="bg-neutral-50 text-zinc-900 hover:bg-neutral-300">
-                Add property
-              </Button>
+              <Button>Add property</Button>
             </Link>
           </div>
         </div>
 
-        <div className="rounded-md w-full bg-zinc-900 border border-zinc-800">
+        <div className="rounded-md w-full dark:bg-zinc-900 border dark:border-zinc-800 shadow">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   key={headerGroup.id}
-                  className="hover:bg-zinc-900 border-zinc-800"
+                  className="dark:hover:bg-zinc-900 dark:border-zinc-800"
                 >
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id} className="text-zinc-50">
+                      <TableHead key={header.id} className="dark:text-zinc-50">
                         {header.isPlaceholder
                           ? null
                           : flexRender(
@@ -142,7 +140,7 @@ export function DataTable<TData, TValue>({
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    className="hover:bg-zinc-800 border-zinc-800"
+                    className="dark:hover:bg-zinc-800 dark:border-zinc-800"
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
@@ -158,7 +156,7 @@ export function DataTable<TData, TValue>({
                 <TableRow>
                   <TableCell
                     colSpan={columns.length}
-                    className="h-24 text-center hover:bg-zinc-900 bg-zinc-900"
+                    className="h-24 text-center dark:hover:bg-zinc-900 dark:bg-zinc-900"
                   >
                     No results.
                   </TableCell>
@@ -171,7 +169,7 @@ export function DataTable<TData, TValue>({
           <Button
             variant="outline"
             size="sm"
-            className="bg-zinc-900"
+            className="dark:bg-zinc-900 shadow"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -180,7 +178,7 @@ export function DataTable<TData, TValue>({
           <Button
             variant="outline"
             size="sm"
-            className="bg-zinc-900"
+            className="dark:bg-zinc-900 shadow"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >

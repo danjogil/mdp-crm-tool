@@ -15,7 +15,7 @@ export const columns: ColumnDef<Property>[] = [
     cell: ({ row }) => {
       const location: string = row.getValue("location");
 
-      return <div className="font-small text-zinc-50">{location}</div>;
+      return <div className="font-small dark:text-zinc-50">{location}</div>;
     },
   },
   {
@@ -25,7 +25,9 @@ export const columns: ColumnDef<Property>[] = [
       const type: string = row.getValue("type");
 
       return (
-        <div className="font-light text-zinc-300 hidden sm:block">{type}</div>
+        <div className="font-light dark:text-zinc-300 hidden sm:block">
+          {type}
+        </div>
       );
     },
   },
@@ -39,7 +41,7 @@ export const columns: ColumnDef<Property>[] = [
         currency: "EUR",
       }).format(price);
 
-      return <div className="font-small text-zinc-50">{formatted}</div>;
+      return <div className="font-small dark:text-zinc-50">{formatted}</div>;
     },
   },
   {
@@ -49,7 +51,7 @@ export const columns: ColumnDef<Property>[] = [
       const propertyType: string = row.getValue("propertyType");
 
       return (
-        <div className="font-light text-zinc-300 hidden md:block">
+        <div className="font-light dark:text-zinc-300 hidden md:block">
           {propertyType}
         </div>
       );
@@ -62,7 +64,9 @@ export const columns: ColumnDef<Property>[] = [
       const beds: string = row.getValue("beds");
 
       return (
-        <div className="font-light text-zinc-300 hidden sm:block">{beds}</div>
+        <div className="font-light dark:text-zinc-300 hidden sm:block">
+          {beds}
+        </div>
       );
     },
   },
@@ -73,7 +77,7 @@ export const columns: ColumnDef<Property>[] = [
       const conditions: string = row.getValue("conditions");
 
       return (
-        <div className="font-light text-zinc-300 hidden sm:block">
+        <div className="font-light dark:text-zinc-300 hidden sm:block">
           {conditions}
         </div>
       );
@@ -85,7 +89,7 @@ export const columns: ColumnDef<Property>[] = [
       return (
         <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="hidden sm:flex md:items-center hover:text-zinc-400 cursor-pointer transition-colors"
+          className="hidden sm:flex md:items-center dark:hover:text-zinc-400 cursor-pointer transition-colors"
         >
           Status
           <ArrowUpDown className="ml-2 h-4 w-4" />

@@ -40,20 +40,22 @@ const PropertyStatusSelect: React.FC<Props> = ({ id, status, className }) => {
       }}
     >
       <SelectTrigger
-        className={`w-full bg-inherit text-neutral-50 ring-offset-white focus:ring-zinc-900 ${className} ${
-          status === "AVAILABLE" && "border border-green-500 text-green-500"
+        className={`w-full bg-inherit dark:text-neutral-50 dark:bg-zinc-900 dark:border-zinc-800 dark:ring-offset-white dark:focus:ring-zinc-900 ${className} ${
+          status === "AVAILABLE" &&
+          "border border-green-500 text-green-500 dark:border-green-500 dark:text-green-500"
         } ${
-          status === "UNAVAILABLE" && "border border-zinc-500 text-zinc-500"
+          status === "UNAVAILABLE" &&
+          "border border-zinc-500 text-zinc-500 dark:border-zinc-500 dark:text-zinc-500"
         }`}
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="bg-zinc-900 text-zinc-50 border border-zinc-800">
+      <SelectContent className="dark:bg-zinc-900 dark:text-zinc-50 border dark:border-zinc-800">
         {statuses?.map((status) => (
           <SelectItem
             key={status}
             value={status}
-            className="focus:bg-zinc-800 focus:text-zinc-50"
+            className="dark:focus:bg-zinc-800 dark:focus:text-zinc-50"
           >
             {status}
           </SelectItem>
