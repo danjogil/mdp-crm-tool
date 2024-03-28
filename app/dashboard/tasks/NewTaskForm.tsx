@@ -85,7 +85,7 @@ const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Textarea
-                  className="dark:bg-zinc-700 bg-slate-50 dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
+                  className="dark:bg-zinc-700 bg-zinc-50 shadow-sm dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
                   {...field}
                 />
               </FormControl>

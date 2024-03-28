@@ -47,7 +47,7 @@ const FormInput: React.FC<Props> = ({ control, name, label, placeholder }) => {
           <FormControl>
             <Input
               placeholder={placeholder}
-              className="bg-zinc-700 text-neutral-50"
+              className="dark:bg-zinc-700 dark:text-neutral-50"
               {...field}
             />
           </FormControl>

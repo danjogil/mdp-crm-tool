@@ -98,9 +98,9 @@ const NewLeadForm = () => {
       className="relative flex flex-col gap-4 items-center justify-center z-20"
     >
       <Form {...form}>
-        <div className="max-w-5xl w-full mx-auto rounded-2xl p-4 shadow-input">
+        <div className="max-w-5xl w-full mx-auto rounded-2xl p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between mt-3">
-            <h1 className="font-bold text-2xl sm:text-3xl text-neutral-50">
+            <h1 className="font-bold text-2xl sm:text-3xl dark:text-neutral-50">
               Create new lead
             </h1>
 
