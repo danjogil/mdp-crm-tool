@@ -16,11 +16,11 @@ type Lead = {
   date: string | null;
   nationality: string | null;
   status: Status;
-  budgetFrom: string | null;
-  budgetTo: string | null;
+  budgetFrom: number | null;
+  budgetTo: number | null;
   lookingFor: string | null;
   area: string | null;
-  beds: string | null;
+  beds: number | null;
   propertyType: string | null;
   extra: string | null;
   comment: string | null;
