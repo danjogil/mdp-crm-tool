@@ -52,7 +52,7 @@ const NavMenu: React.FC<NavbarProps> = ({ currentUser }) => {
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <p
-              className="font-bold text-inherit cursor-pointer dark:text-neutral-50"
+              className="font-bold text-inherit cursor-pointer dark:text-neutral-50 text-xl"
               onClick={() =>
                 currentUser ? router.push("/dashboard") : router.push("/")
               }
