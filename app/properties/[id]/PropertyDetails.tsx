@@ -32,7 +32,7 @@ const LeadDetails: React.FC<Props> = ({ property }) => {
         <div className="w-full max-w-5xl flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center mt-3">
             <h1 className="text-2xl sm:text-3xl font-semibold">
-              {property?.location}
+              {property?.propertyType} in {property?.location}
             </h1>
             <div className="flex gap-3">
               <div>

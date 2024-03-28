@@ -16,7 +16,7 @@ const LeadPage: React.FC<Props> = async ({ params }) => {
   return (
     <>
       <LeadDetails lead={lead} />
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </>
   );
 };

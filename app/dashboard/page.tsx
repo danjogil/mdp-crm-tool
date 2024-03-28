@@ -29,7 +29,7 @@ const DashboardPage = async () => {
       <div className="p-4 border border-zinc-800 bg-zinc-900 text-zinc-50 z-20 w-full max-w-6xl rounded-md mb-4">
         bar graph
       </div>
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 };

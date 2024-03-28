@@ -13,9 +13,9 @@ const LeadsPage = async () => {
   }));
 
   return (
-    <div className="px-4 pb-4 pt-20 text-white bg-zinc-900 h-screen">
+    <div className="px-4 pb-4 pt-20 dark:text-white dark:bg-zinc-900 h-screen">
       <DataTable columns={columns} data={formattedData} />
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 };

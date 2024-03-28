@@ -19,7 +19,7 @@ const LoginPage = () => {
       >
         <LoginForm />
       </motion.div>
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 };

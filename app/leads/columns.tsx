@@ -33,7 +33,7 @@ export const columns: ColumnDef<Lead>[] = [
     cell: ({ row }) => {
       const name: string = row.getValue("name");
 
-      return <div className="font-small text-zinc-50">{name}</div>;
+      return <div className="font-small dark:text-zinc-50">{name}</div>;
     },
   },
   {
@@ -42,7 +42,7 @@ export const columns: ColumnDef<Lead>[] = [
       return (
         <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="hidden md:flex md:items-center hover:text-zinc-400 cursor-pointer transition-colors"
+          className="hidden md:flex md:items-center dark:hover:text-zinc-400 cursor-pointer transition-colors"
         >
           Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -53,7 +53,9 @@ export const columns: ColumnDef<Lead>[] = [
       const date: string = row.getValue("date");
 
       return (
-        <div className="font-light text-zinc-300 hidden md:block">{date}</div>
+        <div className="font-light dark:text-zinc-300 hidden md:block">
+          {date}
+        </div>
       );
     },
   },
@@ -68,7 +70,7 @@ export const columns: ColumnDef<Lead>[] = [
       }).format(budgetTo);
 
       return (
-        <div className="font-small hidden text-zinc-50 sm:block">
+        <div className="font-small hidden dark:text-zinc-50 sm:block">
           {formatted}
         </div>
       );
@@ -81,7 +83,9 @@ export const columns: ColumnDef<Lead>[] = [
       const area: string = row.getValue("area");
 
       return (
-        <div className="font-light text-zinc-300 hidden md:block">{area}</div>
+        <div className="font-light dark:text-zinc-300 hidden md:block">
+          {area}
+        </div>
       );
     },
   },
@@ -92,7 +96,9 @@ export const columns: ColumnDef<Lead>[] = [
       const beds: string = row.getValue("beds");
 
       return (
-        <div className="font-light text-zinc-300 hidden md:block">{beds}</div>
+        <div className="font-light dark:text-zinc-300 hidden md:block">
+          {beds}
+        </div>
       );
     },
   },
@@ -103,7 +109,7 @@ export const columns: ColumnDef<Lead>[] = [
       const propertyType: string = row.getValue("propertyType");
 
       return (
-        <div className="font-light text-zinc-300 hidden md:block">
+        <div className="font-light dark:text-zinc-300 hidden md:block">
           {propertyType}
         </div>
       );
@@ -115,7 +121,7 @@ export const columns: ColumnDef<Lead>[] = [
       return (
         <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="hidden sm:flex md:items-center hover:text-zinc-400 cursor-pointer transition-colors"
+          className="hidden sm:flex md:items-center dark:hover:text-zinc-400 cursor-pointer transition-colors"
         >
           Status
           <ArrowUpDown className="ml-2 h-4 w-4" />

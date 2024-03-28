@@ -40,7 +40,7 @@ const StatusSelect: React.FC<Props> = ({ id, status, className }) => {
       }}
     >
       <SelectTrigger
-        className={`w-full bg-inherit text-neutral-50 ring-offset-white focus:ring-zinc-900 ${className} ${
+        className={`w-full dark:bg-zinc-900 dark:border-zinc-800 border dark:text-neutral-50 dark:ring-offset-white dark:focus:ring-zinc-900 ${className} ${
           status === "ACTIVE" && "border border-green-500 text-green-500"
         } ${status === "INACTIVE" && "border border-zinc-500 text-zinc-500"} ${
           status === "CLOSED" && "border border-amber-500 text-amber-500"
@@ -48,12 +48,12 @@ const StatusSelect: React.FC<Props> = ({ id, status, className }) => {
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="bg-zinc-900 text-zinc-50 border border-zinc-800">
+      <SelectContent className="dark:bg-zinc-900 dark:text-zinc-50 border dark:border-zinc-800">
         {statuses?.map((status) => (
           <SelectItem
             key={status}
             value={status}
-            className="focus:bg-zinc-800 focus:text-zinc-50"
+            className="dark:focus:bg-zinc-800 dark:focus:text-zinc-50"
           >
             {status}
           </SelectItem>
