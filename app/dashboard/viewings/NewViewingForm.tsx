@@ -22,21 +22,21 @@ import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../../leads/new/NewLeadForm";
 
 const formSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  status: z.string(),
+  lead: z.string(),
+  property: z.string(),
+  date: z.string(),
 });
 
-const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
+const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      status: "INCOMPLETE",
+      lead: "",
+      property: "",
+      date: "",
     },
   });
 
@@ -60,7 +60,7 @@ const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
+        {/* <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
@@ -75,24 +75,7 @@ const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
               <FormMessage />
             </FormItem>
           )}
-        />
-
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Textarea
-                  className="dark:bg-zinc-700 bg-zinc-50 shadow-sm dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        /> */}
 
         {!isLoading ? (
           <button
@@ -112,4 +95,4 @@ const NewTaskForm = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export default NewTaskForm;
+export default NewViewingForm;

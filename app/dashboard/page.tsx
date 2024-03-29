@@ -3,7 +3,8 @@ import Stats from "./Stats";
 import prisma from "@/app/libs/prismadb";
 
 import { DataTable } from "./tasks/table/data-table";
-import { columns } from "./tasks/table/columns";
+import { columns as taskColumns } from "./tasks/table/columns";
+import { columns as viewingColumns } from "./viewings/table/columns";
 
 const DashboardPage = async () => {
   const tasks = await prisma.task.findMany({
@@ -17,11 +18,11 @@ const DashboardPage = async () => {
       <Stats />
       <div className="w-full flex justify-center">
         <div className="w-full max-w-6xl flex flex-col sm:flex-row gap-5">
-          <div className="grow shadow border dark:border-zinc-800 px-6 py-4 rounded-md dark:bg-zinc-900 z-20 min-w-md w-full">
-            Viewings
+          <div className="z-20 shadow sm:max-w-md w-full rounded-md">
+            <DataTable columns={viewingColumns} data={tasks} />
           </div>
           <div className="z-20 shadow sm:max-w-md w-full rounded-md">
-            <DataTable columns={columns} data={tasks} />
+            <DataTable columns={taskColumns} data={tasks} />
           </div>
         </div>
       </div>

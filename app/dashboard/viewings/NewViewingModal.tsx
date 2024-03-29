@@ -1,6 +1,6 @@
 import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
 import { ReactNode } from "react";
-import NewTaskForm from "./NewTaskForm";
+import NewViewingForm from "./NewViewingForm";
 
 function NewViewingModal({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -19,7 +19,11 @@ function NewViewingModal({ children }: { children: ReactNode }) {
         className="p-6 dark:bg-zinc-900 dark:text-zinc-50"
       >
         <ModalContent>
-          {(onClose) => <>{/* <NewTaskForm onClose={onClose} /> */}</>}
+          {(onClose) => (
+            <>
+              <NewViewingForm onClose={onClose} />
+            </>
+          )}
         </ModalContent>
       </Modal>
     </>
