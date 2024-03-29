@@ -39,6 +39,9 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isChangingStatus, setIsChangingStatus] = useState(false);
+
+  const newStatus = task?.status === "INCOMPLETE" ? "COMPLETE" : "INCOMPLETE";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -117,6 +120,39 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
           </button>
         )}
       </form>
+
+      {!isChangingStatus ? (
+        <button
+          onClick={async () => {
+            setIsChangingStatus(true);
+            await axios
+              .patch(`/api/tasks/${task?.id}`, { status: newStatus })
+              .then(() => {
+                toast.success("Task status updated!");
+                router.refresh();
+                onClose();
+              })
+              .catch(() => {
+                toast.error("Something went wrong.");
+              })
+              .finally(() => {
+                setIsChangingStatus(false);
+              });
+          }}
+          className={`bg-gradient-to-br relative group/btn w-full text-white rounded-md h-10 font-medium disabled:cursor-not-allowed mb-5 transition-colors duration-400 ${
+            task?.status === "INCOMPLETE"
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-neutral-500 hover:bg-neutral-600"
+          }`}
+          type="submit"
+        >
+          Mark {task?.status === "COMPLETE" ? "incomplete" : "complete"}
+        </button>
+      ) : (
+        <button className="w-full text-white bg-neutral-600 rounded-md h-10 font-medium flex justify-center items-center mb-5">
+          <ClipLoader color="#fff" size={24} />
+        </button>
+      )}
 
       {!isDeleting ? (
         <button

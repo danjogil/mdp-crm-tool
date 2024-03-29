@@ -2,10 +2,10 @@
 
 import { Task } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
+import { FaCheck } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import EditTaskModal from "../EditTaskModal";
 import NewTaskModal from "../NewTaskModal";
-import TaskStatusButton from "@/app/components/TaskStatusButton";
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -25,7 +25,10 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex justify-between items-center gap-2">
           <EditTaskModal task={task}>{title}</EditTaskModal>
-          <TaskStatusButton task={task} />
+
+          {task?.status === "COMPLETE" && (
+            <FaCheck className="text-green-500" />
+          )}
         </div>
       );
     },

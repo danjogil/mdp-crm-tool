@@ -136,7 +136,7 @@ const EditViewingForm: React.FC<Props> = ({ viewing, onClose }) => {
           }}
           className="bg-gradient-to-br relative group/btn dark:hover:bg-red-800 hover:bg-red-700 block dark:bg-red-700 bg-red-600 w-full text-white rounded-md h-10 font-medium disabled:cursor-not-allowed transition-colors duration-400"
         >
-          Delete task &rarr;
+          Delete viewing &rarr;
         </button>
       ) : (
         <button className="w-full text-white bg-neutral-600 rounded-md h-10 font-medium flex justify-center items-center">
