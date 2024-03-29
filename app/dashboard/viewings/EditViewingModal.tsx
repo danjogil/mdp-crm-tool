@@ -1,25 +1,22 @@
-import React from "react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
-import { Task } from "@prisma/client";
-import EditTaskForm from "./EditViewingForm";
+"use client";
 
-function EditTaskModal({ task, children }: { task: Task; children: string }) {
+import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
+import { Viewing } from "@prisma/client";
+import EditViewingForm from "./EditViewingForm";
+
+function EditViewingModal({
+  viewing,
+  children,
+}: {
+  viewing: Viewing;
+  children: string;
+}) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
       <div
-        className={`cursor-pointer m-[-1rem] p-4 font-light grow ${
-          task?.status === "COMPLETE" && "line-through text-green-500"
-        }`}
+        className={`cursor-pointer m-[-1rem] p-4 font-light grow`}
         onClick={onOpen}
       >
         {children}
@@ -32,7 +29,7 @@ function EditTaskModal({ task, children }: { task: Task; children: string }) {
         <ModalContent>
           {(onClose) => (
             <>
-              <EditTaskForm task={task} onClose={onClose} />
+              <EditViewingForm viewing={viewing} onClose={onClose} />
             </>
           )}
         </ModalContent>
@@ -41,4 +38,4 @@ function EditTaskModal({ task, children }: { task: Task; children: string }) {
   );
 }
 
-export default EditTaskModal;
+export default EditViewingModal;

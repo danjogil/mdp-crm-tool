@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { Task } from "@prisma/client";
+import { Task, Viewing } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -24,18 +24,17 @@ import { BottomGradient } from "../../leads/new/NewLeadForm";
 
 const formSchema = z.object({
   title: z.string(),
-  description: z.string(),
-  status: z.string(),
+  comment: z.string(),
 });
 
-const statuses = ["INCOMPLETE", "COMPLETE"];
+// const statuses = ["INCOMPLETE", "COMPLETE"];
 
 interface Props {
-  task: Task;
+  viewing: Viewing;
   onClose: () => void;
 }
 
-const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
+const EditViewingForm: React.FC<Props> = ({ viewing, onClose }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -43,16 +42,15 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: task?.title,
-      description: task?.description || "",
-      status: task?.status,
+      title: viewing?.title,
+      comment: viewing?.comment || "",
     },
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
     axios
-      .patch(`/api/tasks/${task?.id}`, data)
+      .patch(`/api/viewings/${viewing?.id}`, data)
       .then(() => {
         toast.success("Changes saved!");
         router.refresh();
@@ -74,7 +72,7 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel>Viewing</FormLabel>
               <FormControl>
                 <Input
                   className="dark:bg-zinc-700 dark:text-neutral-50"
@@ -88,10 +86,10 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
 
         <FormField
           control={form.control}
-          name="description"
+          name="comment"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Comment</FormLabel>
               <FormControl>
                 <Textarea
                   className="dark:bg-zinc-700 bg-zinc-50 shadow-sm dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
@@ -123,7 +121,7 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
           onClick={async () => {
             setIsDeleting(true);
             await axios
-              .delete(`/api/tasks/${task?.id}`)
+              .delete(`/api/viewings/${viewing?.id}`)
               .then(() => {
                 toast.success("Task deleted!");
                 router.refresh();
@@ -149,4 +147,4 @@ const EditTaskForm: React.FC<Props> = ({ task, onClose }) => {
   );
 };
 
-export default EditTaskForm;
+export default EditViewingForm;

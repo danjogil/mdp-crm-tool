@@ -23,6 +23,8 @@ const Stats = async () => {
     },
   });
 
+  const numViewings = await prisma.viewing.count();
+
   return (
     <div className="w-full flex justify-center">
       <div className="mt-16 stats stats-vertical lg:stats-horizontal shadow w-full z-20 dark:bg-zinc-900 dark:text-zinc-50 max-w-6xl flex border dark:border-zinc-800 rounded-md">
@@ -45,7 +47,7 @@ const Stats = async () => {
             <div className="stat-title dark:text-zinc-400 text-small sm:text-medium">
               Viewings Booked
             </div>
-            <div className="stat-value">0</div>
+            <div className="stat-value">{numViewings}</div>
           </div>
         </div>
 

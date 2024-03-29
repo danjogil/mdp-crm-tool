@@ -19,12 +19,11 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../../leads/new/NewLeadForm";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-  date: z.string(),
-  time: z.string(),
-  lead: z.string(),
-  property: z.string(),
+  title: z.string(),
+  comment: z.string(),
 });
 
 const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
@@ -34,10 +33,8 @@ const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      date: "",
-      time: "",
-      lead: "",
-      property: "",
+      title: "",
+      comment: "",
     },
   });
 
@@ -63,10 +60,10 @@ const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="lead"
+          name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Lead</FormLabel>
+              <FormLabel>Viewing</FormLabel>
               <FormControl>
                 <Input
                   className="dark:bg-zinc-700 dark:text-neutral-50"
@@ -80,47 +77,13 @@ const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
 
         <FormField
           control={form.control}
-          name="property"
+          name="comment"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Property</FormLabel>
+              <FormLabel>Comment</FormLabel>
               <FormControl>
-                <Input
-                  className="dark:bg-zinc-700 dark:text-neutral-50"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Date</FormLabel>
-              <FormControl>
-                <Input
-                  className="dark:bg-zinc-700 dark:text-neutral-50"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="time"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Time</FormLabel>
-              <FormControl>
-                <Input
-                  className="dark:bg-zinc-700 dark:text-neutral-50"
+                <Textarea
+                  className="dark:bg-zinc-700 bg-zinc-50 shadow-sm dark:border-0 dark:ring-offset-neutral-400 dark:text-neutral-50 transition duration-400"
                   {...field}
                 />
               </FormControl>

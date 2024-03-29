@@ -105,10 +105,8 @@ model Property {
 
 model Viewing {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  date      String
-  time      String
-  lead      String
-  property  String
+  title     String
+  comment   String?
   createdAt DateTime @default(now())
   userId    String   @db.ObjectId
 }

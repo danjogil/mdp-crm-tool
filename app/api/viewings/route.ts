@@ -13,11 +13,9 @@ export async function POST(request: NextRequest) {
 
   const viewing = await prisma.viewing.create({
     data: {
-      lead: body.lead,
-      property: body.property,
-      date: body.date,
-      time: body.time,
-      userId: currentUser.id,
+      title: body.title,
+      comment: body.comment,
+      userId: currentUser?.id,
     },
   });
 
