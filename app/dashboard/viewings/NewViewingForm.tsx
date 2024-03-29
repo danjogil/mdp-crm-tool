@@ -24,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 const formSchema = z.object({
   title: z.string(),
   comment: z.string(),
+  status: z.string(),
 });
 
 const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
@@ -35,6 +36,7 @@ const NewViewingForm = ({ onClose }: { onClose: () => void }) => {
     defaultValues: {
       title: "",
       comment: "",
+      status: "INCOMPLETE",
     },
   });
 

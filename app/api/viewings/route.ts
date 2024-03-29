@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
     data: {
       title: body.title,
       comment: body.comment,
+      status: body.status,
       userId: currentUser?.id,
     },
   });

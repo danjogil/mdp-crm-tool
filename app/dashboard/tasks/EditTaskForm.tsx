@@ -28,8 +28,6 @@ const formSchema = z.object({
   status: z.string(),
 });
 
-const statuses = ["INCOMPLETE", "COMPLETE"];
-
 interface Props {
   task: Task;
   onClose: () => void;

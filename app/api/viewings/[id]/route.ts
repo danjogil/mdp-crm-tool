@@ -7,7 +7,7 @@ export async function PATCH(
 ) {
   const body = await request.json();
 
-  const { title, comment } = body;
+  const { title, comment, status } = body;
 
   const viewing = await prisma.viewing.findUnique({
     where: { id: params?.id },
@@ -21,6 +21,7 @@ export async function PATCH(
     data: {
       title,
       comment,
+      status,
     },
   });
 

@@ -16,7 +16,9 @@ function EditViewingModal({
   return (
     <>
       <div
-        className={`cursor-pointer m-[-1rem] p-4 font-light grow`}
+        className={`cursor-pointer m-[-1rem] p-4 font-light grow ${
+          viewing?.status === "COMPLETE" && "text-green-500 line-through"
+        } ${viewing?.status === "CANCELLED" && "text-red-500 line-through"}`}
         onClick={onOpen}
       >
         {children}
@@ -24,6 +26,7 @@ function EditViewingModal({
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        isDismissable={false}
         className="p-6 dark:bg-zinc-900 dark:text-zinc-50"
       >
         <ModalContent>

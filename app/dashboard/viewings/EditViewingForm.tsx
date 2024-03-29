@@ -21,13 +21,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
 import { BottomGradient } from "../../leads/new/NewLeadForm";
+import ViewingStatusSelect from "./ViewingStatusSelect";
 
 const formSchema = z.object({
   title: z.string(),
   comment: z.string(),
 });
-
-// const statuses = ["INCOMPLETE", "COMPLETE"];
 
 interface Props {
   viewing: Viewing;
@@ -38,6 +37,7 @@ const EditViewingForm: React.FC<Props> = ({ viewing, onClose }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isChangingStatus, setIsChangingStatus] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -115,6 +115,19 @@ const EditViewingForm: React.FC<Props> = ({ viewing, onClose }) => {
           </button>
         )}
       </form>
+
+      {!isChangingStatus ? (
+        <ViewingStatusSelect
+          id={viewing?.id}
+          status={viewing?.status}
+          className="mb-5"
+          onClose={onClose}
+        />
+      ) : (
+        <button className="w-full text-white bg-neutral-600 rounded-md h-10 font-medium flex justify-center items-center mb-5">
+          <ClipLoader color="#fff" size={24} />
+        </button>
+      )}
 
       {!isDeleting ? (
         <button

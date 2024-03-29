@@ -104,11 +104,12 @@ model Property {
 }
 
 model Viewing {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   comment   String?
-  createdAt DateTime @default(now())
-  userId    String   @db.ObjectId
+  status    ViewingStatus
+  createdAt DateTime      @default(now())
+  userId    String        @db.ObjectId
 }
 
 enum Status {
@@ -125,4 +126,10 @@ enum TaskStatus {
 enum PropertyStatus {
   AVAILABLE
   UNAVAILABLE
+}
+
+enum ViewingStatus {
+  COMPLETE
+  INCOMPLETE
+  CANCELLED
 }
