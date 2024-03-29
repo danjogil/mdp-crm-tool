@@ -33,7 +33,17 @@ export const columns: ColumnDef<Property>[] = [
   },
   {
     accessorKey: "price",
-    header: () => <div>Price</div>,
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex items-center dark:hover:text-zinc-400 cursor-pointer transition-colors"
+        >
+          Price
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("price"));
       const formatted = new Intl.NumberFormat("en-US", {

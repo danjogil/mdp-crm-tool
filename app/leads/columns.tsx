@@ -61,7 +61,17 @@ export const columns: ColumnDef<Lead>[] = [
   },
   {
     accessorKey: "budgetTo",
-    header: () => <div className="hidden sm:block">Budget</div>,
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="hidden md:flex md:items-center dark:hover:text-zinc-400 cursor-pointer transition-colors"
+        >
+          Budget
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </div>
+      );
+    },
     cell: ({ row }) => {
       const budgetTo = parseFloat(row.getValue("budgetTo"));
       const formatted = new Intl.NumberFormat("en-US", {

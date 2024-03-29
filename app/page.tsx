@@ -27,7 +27,7 @@ export default function Home() {
           <Link href="/login">Login</Link>
         </button>
       </motion.div>
-      {/* <BackgroundBeams /> */}
+      <BackgroundBeams />
     </div>
   );
 }

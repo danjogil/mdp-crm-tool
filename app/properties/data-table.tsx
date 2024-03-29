@@ -82,7 +82,7 @@ export function DataTable<TData, TValue>({
         </div>
 
         <div className="flex flex-col sm:flex-row py-4 space-y-4 sm:space-y-0 sm:items-center w-full sm:space-x-4">
-          <div className="w-full">
+          <div className="flex gap-4 items-center justify-between w-full">
             <Input
               placeholder="Filter location..."
               value={
@@ -90,18 +90,6 @@ export function DataTable<TData, TValue>({
               }
               onChange={(event) =>
                 table.getColumn("location")?.setFilterValue(event.target.value)
-              }
-              className="dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-300 border dark:border-zinc-800 dark:ring-offset-zinc-700 dark:focus-visible:ring-0 ring-offset-0 transition duration-400 shadow"
-            />
-          </div>
-          <div className="flex gap-4 items-center justify-between w-full">
-            <Input
-              placeholder="Filter price..."
-              value={
-                (table.getColumn("price")?.getFilterValue() as string) ?? ""
-              }
-              onChange={(event) =>
-                table.getColumn("price")?.setFilterValue(event.target.value)
               }
               className="dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-300 border dark:border-zinc-800 dark:ring-offset-zinc-700 dark:focus-visible:ring-0 ring-offset-0 transition duration-400 shadow"
             />
