@@ -198,7 +198,7 @@ const EditPropertyForm: React.FC<Props> = ({ property, id }) => {
                 className="bg-gradient-to-br relative group/btn  from-zinc-800 to-zinc-800 block bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-not-allowed"
                 type="submit"
               >
-                Add Property &rarr;
+                Save Changes &rarr;
                 <BottomGradient />
               </button>
             ) : (

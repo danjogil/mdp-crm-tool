@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { Task } from "@prisma/client";
-import EditTaskForm from "./EditTaskForm";
+import EditTaskForm from "./EditViewingForm";
 
 function EditTaskModal({ task, children }: { task: Task; children: string }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

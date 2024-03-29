@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
       lead: body.lead,
       property: body.property,
       date: body.date,
+      time: body.time,
       userId: currentUser.id,
     },
   });

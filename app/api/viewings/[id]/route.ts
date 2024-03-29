@@ -7,7 +7,7 @@ export async function PATCH(
 ) {
   const body = await request.json();
 
-  const { lead, property, date } = body;
+  const { lead, property, date, time } = body;
 
   const viewing = await prisma.viewing.findUnique({
     where: { id: params?.id },
@@ -22,6 +22,7 @@ export async function PATCH(
       lead,
       property,
       date,
+      time,
     },
   });
 
