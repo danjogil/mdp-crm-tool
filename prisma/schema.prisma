@@ -67,7 +67,8 @@ model Lead {
   createdAt    DateTime @default(now())
   userId       String   @db.ObjectId
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Viewing Viewing[]
 }
 
 model Task {
@@ -100,7 +101,19 @@ model Property {
   createdAt    DateTime       @default(now())
   userId       String         @db.ObjectId
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Viewing Viewing[]
+}
+
+model Viewing {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  date       DateTime
+  lead       Lead     @relation(fields: [leadId], references: [id])
+  property   Property @relation(fields: [propertyId], references: [id])
+  createdAt  DateTime @default(now())
+  userId     String   @db.ObjectId
+  leadId     String   @db.ObjectId
+  propertyId String   @db.ObjectId
 }
 
 enum Status {
