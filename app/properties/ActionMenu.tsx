@@ -71,9 +71,9 @@ const ActionMenu = ({ id }: { id: string }) => {
                 className="dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300 dark:hover:text-zinc-900"
                 onClick={async () => {
                   await axios
-                    .delete(`/api/leads/${id}`)
+                    .delete(`/api/properties/${id}`)
                     .then(() => {
-                      toast.success("Lead deleted!");
+                      toast.success("Property deleted!");
                       router.refresh();
                     })
                     .catch(() => {
