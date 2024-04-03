@@ -9,11 +9,15 @@ import { columns as viewingColumns } from "./viewings/table/columns";
 const DashboardPage = async () => {
   const tasks = await prisma.task.findMany({
     orderBy: {
-      createdAt: "desc",
+      title: "asc",
     },
   });
 
-  const viewings = await prisma.viewing.findMany();
+  const viewings = await prisma.viewing.findMany({
+    orderBy: {
+      title: "asc",
+    },
+  });
 
   return (
     <div className="p-4 dark:bg-zinc-900 dark:text-white h-full space-y-5 flex-col flex items-center">
