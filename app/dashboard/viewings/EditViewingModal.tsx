@@ -17,8 +17,8 @@ function EditViewingModal({
     <>
       <div
         className={`cursor-pointer m-[-1rem] p-4 font-light grow ${
-          viewing?.status === "COMPLETE" && "text-green-500 line-through"
-        } ${viewing?.status === "CANCELLED" && "text-red-500 line-through"}`}
+          viewing?.status === "COMPLETE" && "line-through"
+        } ${viewing?.status === "BOOKED" && "text-green-500"}`}
         onClick={onOpen}
       >
         {children}

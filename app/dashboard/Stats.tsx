@@ -45,7 +45,7 @@ const Stats = async () => {
 
           <div className="stat dark:bg-zinc-900 z-20">
             <div className="stat-title dark:text-zinc-400 text-small sm:text-medium">
-              Viewings Booked
+              Viewings
             </div>
             <div className="stat-value">{numViewings}</div>
           </div>

@@ -20,7 +20,7 @@ interface Props {
   onClose: () => void;
 }
 
-const statuses = ["INCOMPLETE", "COMPLETE", "CANCELLED"];
+const statuses = ["INCOMPLETE", "COMPLETE", "BOOKED"];
 
 const ViewingStatusSelect: React.FC<Props> = ({
   id,
@@ -54,8 +54,8 @@ const ViewingStatusSelect: React.FC<Props> = ({
           status === "INCOMPLETE" &&
           "border border-zinc-500 text-zinc-500 dark:border-zinc-500 dark:text-zinc-500"
         } ${
-          status === "CANCELLED" &&
-          "border dark:border-red-500 dark:text-red-500 border-red-500 text-red-500"
+          status === "BOOKED" &&
+          "border border-amber-500 text-amber-500 dark:border-amber-500 dark:text-amber-500"
         }`}
       >
         <SelectValue />
