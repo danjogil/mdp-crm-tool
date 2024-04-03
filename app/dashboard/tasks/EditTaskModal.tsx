@@ -1,13 +1,4 @@
-import React from "react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Modal, ModalContent, useDisclosure } from "@nextui-org/react";
 import { Task } from "@prisma/client";
 import EditTaskForm from "./EditTaskForm";
 
@@ -18,7 +9,7 @@ function EditTaskModal({ task, children }: { task: Task; children: string }) {
     <>
       <div
         className={`cursor-pointer m-[-1rem] p-4 font-light grow ${
-          task?.status === "COMPLETE" && "line-through text-green-500"
+          task?.status === "COMPLETE" && "text-green-500"
         }`}
         onClick={onOpen}
       >

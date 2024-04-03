@@ -25,10 +25,6 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex justify-between items-center gap-2">
           <EditTaskModal task={task}>{title}</EditTaskModal>
-
-          {task?.status === "COMPLETE" && (
-            <FaCheck className="text-green-500" />
-          )}
         </div>
       );
     },
