@@ -1,5 +1,4 @@
 import prisma from "@/app/libs/prismadb";
-import { BackgroundBeams } from "../components/ui/Beams";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
@@ -9,7 +8,6 @@ const PropertiesPage = async () => {
   return (
     <div className="px-4 pb-4 pt-20 dark:text-white dark:bg-zinc-900 h-screen">
       <DataTable columns={columns} data={properties} />
-      {/* <BackgroundBeams /> */}
     </div>
   );
 };

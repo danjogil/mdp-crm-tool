@@ -23,7 +23,7 @@ const DashboardPage = async () => {
           <div className="z-20 w-full rounded-md">
             <ViewingTable columns={viewingColumns} data={viewings} />
           </div>
-          <div className="z-20 sm:max-w-md w-full rounded-md">
+          <div className="z-20 w-full rounded-md">
             <TaskTable columns={taskColumns} data={tasks} />
           </div>
         </div>

@@ -52,7 +52,7 @@ const FormDateInput: React.FC<Props> = ({ control, name, label }) => {
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col">
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className="mt-2">{label}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <FormControl>

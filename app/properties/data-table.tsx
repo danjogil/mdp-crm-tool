@@ -22,9 +22,8 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { motion } from "framer-motion";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -64,16 +63,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <motion.div
-      initial={{ opacity: 0.0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.3,
-        duration: 0.8,
-        ease: "easeInOut",
-      }}
-      className="relative flex flex-col gap-4 items-center justify-center z-20"
-    >
+    <div className="relative flex flex-col gap-4 items-center justify-center">
       <div className="w-full max-w-6xl">
         <div className="w-full max-w-7xl">
           <h1 className="font-bold text-2xl sm:text-3xl dark:text-neutral-50">
@@ -174,6 +164,6 @@ export function DataTable<TData, TValue>({
           </Button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
