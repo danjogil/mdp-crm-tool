@@ -147,7 +147,7 @@ const NewPropertyForm = () => {
                   control={form.control}
                   name="propertyType"
                   label="Property Type"
-                  options={["Apartment", "Townhouse", "Villa"]}
+                  options={["Apartment", "Penthouse", "Townhouse", "Villa"]}
                 />
                 <FormDateInput
                   control={form.control}
