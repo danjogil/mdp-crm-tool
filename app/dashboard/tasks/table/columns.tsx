@@ -2,7 +2,6 @@
 
 import { Task } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaCheck } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import EditTaskModal from "../EditTaskModal";
 import NewTaskModal from "../NewTaskModal";

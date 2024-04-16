@@ -56,14 +56,17 @@ export const columns: ColumnDef<Property>[] = [
   },
   {
     accessorKey: "propertyType",
-    header: () => <div className="hidden md:block">Property Type</div>,
+    header: () => (
+      <div>
+        <p className="hidden md:block">Property Type</p>
+        <p className="block md:hidden">Type</p>
+      </div>
+    ),
     cell: ({ row }) => {
       const propertyType: string = row.getValue("propertyType");
 
       return (
-        <div className="font-light dark:text-zinc-300 hidden md:block">
-          {propertyType}
-        </div>
+        <div className="md:font-light dark:text-zinc-300">{propertyType}</div>
       );
     },
   },
